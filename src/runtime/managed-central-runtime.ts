@@ -39,6 +39,7 @@ interface ManagedInterfaceRuntime {
 export interface ManagedCentralRuntimeFactoryOptions {
   readonly callbackBindHost?: string;
   readonly callbackAdvertisedHost: string;
+  readonly callbackClientIdPrefix?: string;
   readonly enableVirtualDevices?: boolean;
   readonly createBidCosRfClient?: (
     config: OpenCcuConnectionConfig,
@@ -249,7 +250,10 @@ export class ManagedCentralRuntimeFactory implements RuntimeFactory<ManagedCentr
     );
     const supervisor = new ConnectionSupervisor({
       connect: async (signal) => {
-        await client.init(callbackUrl, interfaceId, signal);
+        const callbackClientId = this.#options.callbackClientIdPrefix
+          ? `${this.#options.callbackClientIdPrefix}:${interfaceId}`
+          : interfaceId;
+        await client.init(callbackUrl, callbackClientId, signal);
         await core.refresh(signal);
         if (jsonRpcSession !== undefined) {
           const metadataResult = await core.refreshMetadata(signal);
@@ -260,9 +264,12 @@ export class ManagedCentralRuntimeFactory implements RuntimeFactory<ManagedCentr
         }
       },
       disconnect: async () => {
+        const callbackClientId = this.#options.callbackClientIdPrefix
+          ? `${this.#options.callbackClientIdPrefix}:${interfaceId}`
+          : interfaceId;
         try {
           await client
-            .init("", interfaceId, AbortSignal.timeout(2_000))
+            .init("", callbackClientId, AbortSignal.timeout(2_000))
             .catch(() => undefined);
         } finally {
           await jsonRpcSession
