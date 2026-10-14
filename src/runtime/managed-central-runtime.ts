@@ -251,7 +251,7 @@ export class ManagedCentralRuntimeFactory implements RuntimeFactory<ManagedCentr
     const supervisor = new ConnectionSupervisor({
       connect: async (signal) => {
         const callbackClientId = this.#options.callbackClientIdPrefix
-          ? `${this.#options.callbackClientIdPrefix}:${interfaceId}`
+          ? `${this.#options.callbackClientIdPrefix}-${interfaceId}`
           : interfaceId;
         await client.init(callbackUrl, callbackClientId, signal);
         await core.refresh(signal);
@@ -265,7 +265,7 @@ export class ManagedCentralRuntimeFactory implements RuntimeFactory<ManagedCentr
       },
       disconnect: async () => {
         const callbackClientId = this.#options.callbackClientIdPrefix
-          ? `${this.#options.callbackClientIdPrefix}:${interfaceId}`
+          ? `${this.#options.callbackClientIdPrefix}-${interfaceId}`
           : interfaceId;
         try {
           await client
