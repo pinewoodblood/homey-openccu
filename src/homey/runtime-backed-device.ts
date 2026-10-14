@@ -123,8 +123,9 @@ export abstract class RuntimeBackedDevice extends Homey.Device {
       const options = capabilityPresentationOptions(capability);
       if (options === undefined) continue;
       try {
+        const currentOptions = this.getCapabilityOptions(capability) as unknown;
         await this.setCapabilityOptions(capability, {
-          ...this.getCapabilityOptions(capability),
+          ...(isRecord(currentOptions) ? currentOptions : {}),
           ...options,
         });
       } catch (error) {
