@@ -1,7 +1,7 @@
 import { DEFAULT_HMIP_RF_XML_RPC_PORT } from "../protocol/xmlrpc/homematic-adapter";
 
 export const DEFAULT_JSON_RPC_PATH = "/api/homematic.cgi";
-export const DEFAULT_XML_RPC_CALLBACK_PORT = 12010;
+export const DEFAULT_XML_RPC_CALLBACK_PORT = 12110;
 export const DEFAULT_VIRTUAL_DEVICES_XML_RPC_PORT = 9292;
 
 export interface OpenCcuConnectionConfig {
