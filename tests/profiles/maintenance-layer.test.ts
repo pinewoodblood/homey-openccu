@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { OpenCcuDataPoint, OpenCcuDevice } from "../../src/domain/model";
+import { resolveDeviceMapping } from "../../src/mapping/device-resolver";
 import { resolveHmIpMaintenanceBindings } from "../../src/profiles/maintenance";
 import type { ParameterType } from "../../src/protocol/xmlrpc/types";
 
@@ -63,5 +64,27 @@ describe("HmIP maintenance layer", () => {
     expect(capabilities).toContain("alarm_generic.unreachable");
     expect(capabilities).toContain("alarm_generic.overheat");
     expect(capabilities).not.toContain("INSTALL_TEST");
+  });
+
+  it("keeps pairing minimal and adds maintenance during runtime reconciliation", () => {
+    const pairingCapabilities = resolveDeviceMapping(device()).bindings.map(
+      ({ capability }) => capability,
+    );
+    const runtimeCapabilities = resolveDeviceMapping(
+      device(),
+      undefined,
+      undefined,
+      false,
+      true,
+    ).bindings.map(({ capability }) => capability);
+
+    expect(pairingCapabilities).not.toContain("homematic_rssi_device");
+    expect(runtimeCapabilities).toContain("homematic_rssi_device");
+    expect(runtimeCapabilities).toContain("alarm_generic.unreachable");
+  });
+
+  it("does not add the shared layer to an unverified device family", () => {
+    const unverified = { ...device(), type: "HmIP-UNVERIFIED" };
+    expect(resolveHmIpMaintenanceBindings(unverified)).toEqual([]);
   });
 });
