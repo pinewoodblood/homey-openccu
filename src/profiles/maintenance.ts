@@ -22,12 +22,6 @@ const MAINTENANCE: readonly MaintenanceDefinition[] = [
     types: ["FLOAT", "INTEGER"],
   },
   {
-    capability: "alarm_generic.operating_voltage_status",
-    parameters: ["OPERATING_VOLTAGE_STATUS"],
-    types: ["ENUM"],
-    transform: "normal-status-to-alarm",
-  },
-  {
     capability: "homematic_rssi_device",
     parameters: ["RSSI_DEVICE"],
     types: ["INTEGER"],
@@ -108,6 +102,8 @@ export function resolveHmIpMaintenanceBindings(
     (candidate) => candidate.index === 0 && candidate.type === "MAINTENANCE",
   );
   if (channel === undefined) return [];
+  const interfaceId = channel.dataPoints.values().next().value?.interfaceId;
+  if (interfaceId !== "HmIP-RF") return [];
 
   return MAINTENANCE.flatMap((definition) => {
     const parameter = definition.parameters.find((candidate) => {
