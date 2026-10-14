@@ -13,23 +13,10 @@
     "de": "Erweiterte lokale Homematic-IP-Integration über CCU/OpenCCU"
   },
   "tags": {
-    "en": [
-      "OpenCCU",
-      "Homematic IP",
-      "HmIP",
-      "local"
-    ],
-    "de": [
-      "OpenCCU",
-      "Homematic IP",
-      "HmIP",
-      "lokal"
-    ]
+    "en": ["OpenCCU", "Homematic IP", "HmIP", "local"],
+    "de": ["OpenCCU", "Homematic IP", "HmIP", "lokal"]
   },
-  "category": [
-    "tools",
-    "appliances"
-  ],
+  "category": ["tools", "appliances"],
   "permissions": [],
   "api": {
     "getDiscovery": {
@@ -3089,6 +3076,294 @@
     "actions": [
       {
         "title": {
+          "en": "Start configurable HmIP siren alarm",
+          "de": "Konfigurierbaren HmIP-Sirenenalarm starten"
+        },
+        "titleFormatted": {
+          "en": "Start [[acoustic]] + [[optical]] for [[duration]] [[unit]]",
+          "de": "[[acoustic]] + [[optical]] für [[duration]] [[unit]] starten"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "title": {
+              "en": "Device",
+              "de": "Gerät"
+            },
+            "filter": "driver_id=HmIP-ASIR"
+          },
+          {
+            "name": "acoustic",
+            "type": "dropdown",
+            "title": {
+              "en": "Acoustic signal",
+              "de": "Akustisches Signal"
+            },
+            "values": [
+              {
+                "id": "DISABLE_ACOUSTIC_SIGNAL",
+                "label": {
+                  "en": "Off",
+                  "de": "Aus"
+                }
+              },
+              {
+                "id": "FREQUENCY_RISING",
+                "label": {
+                  "en": "Rising",
+                  "de": "Ansteigend"
+                }
+              },
+              {
+                "id": "FREQUENCY_FALLING",
+                "label": {
+                  "en": "Falling",
+                  "de": "Abfallend"
+                }
+              },
+              {
+                "id": "FREQUENCY_RISING_AND_FALLING",
+                "label": {
+                  "en": "Rising and falling",
+                  "de": "An- und absteigend"
+                }
+              },
+              {
+                "id": "FREQUENCY_ALTERNATING_LOW_HIGH",
+                "label": {
+                  "en": "Alternating low/high",
+                  "de": "Abwechselnd tief/hoch"
+                }
+              },
+              {
+                "id": "FREQUENCY_ALTERNATING_LOW_MID_HIGH",
+                "label": {
+                  "en": "Alternating low/mid/high",
+                  "de": "Abwechselnd tief/mittel/hoch"
+                }
+              },
+              {
+                "id": "FREQUENCY_HIGHON_OFF",
+                "label": {
+                  "en": "High on/off",
+                  "de": "Hoch ein/aus"
+                }
+              },
+              {
+                "id": "FREQUENCY_HIGHON_LONGOFF",
+                "label": {
+                  "en": "High on/long off",
+                  "de": "Hoch ein/lang aus"
+                }
+              },
+              {
+                "id": "FREQUENCY_LOWON_OFF_HIGHON_OFF",
+                "label": {
+                  "en": "Low/high pulse",
+                  "de": "Tief/Hoch-Puls"
+                }
+              },
+              {
+                "id": "FREQUENCY_LOWON_LONGOFF_HIGHON_LONGOFF",
+                "label": {
+                  "en": "Low/high long pulse",
+                  "de": "Tief/Hoch-Langpuls"
+                }
+              },
+              {
+                "id": "LOW_BATTERY",
+                "label": {
+                  "en": "Low battery",
+                  "de": "Batterie schwach"
+                }
+              },
+              {
+                "id": "DISARMED",
+                "label": {
+                  "en": "Disarmed",
+                  "de": "Unscharf"
+                }
+              },
+              {
+                "id": "INTERNALLY_ARMED",
+                "label": {
+                  "en": "Internally armed",
+                  "de": "Intern scharf"
+                }
+              },
+              {
+                "id": "EXTERNALLY_ARMED",
+                "label": {
+                  "en": "Externally armed",
+                  "de": "Extern scharf"
+                }
+              },
+              {
+                "id": "DELAYED_INTERNALLY_ARMED",
+                "label": {
+                  "en": "Delayed internally armed",
+                  "de": "Intern verzögert scharf"
+                }
+              },
+              {
+                "id": "DELAYED_EXTERNALLY_ARMED",
+                "label": {
+                  "en": "Delayed externally armed",
+                  "de": "Extern verzögert scharf"
+                }
+              },
+              {
+                "id": "EVENT",
+                "label": {
+                  "en": "Event",
+                  "de": "Ereignis"
+                }
+              },
+              {
+                "id": "ERROR",
+                "label": {
+                  "en": "Error",
+                  "de": "Fehler"
+                }
+              }
+            ]
+          },
+          {
+            "name": "optical",
+            "type": "dropdown",
+            "title": {
+              "en": "Optical signal",
+              "de": "Optisches Signal"
+            },
+            "values": [
+              {
+                "id": "DISABLE_OPTICAL_SIGNAL",
+                "label": {
+                  "en": "Off",
+                  "de": "Aus"
+                }
+              },
+              {
+                "id": "BLINKING_ALTERNATELY_REPEATING",
+                "label": {
+                  "en": "Alternating blinking",
+                  "de": "Abwechselnd blinken"
+                }
+              },
+              {
+                "id": "BLINKING_BOTH_REPEATING",
+                "label": {
+                  "en": "Both blinking",
+                  "de": "Beide blinken"
+                }
+              },
+              {
+                "id": "DOUBLE_FLASHING_REPEATING",
+                "label": {
+                  "en": "Double flash",
+                  "de": "Doppelblitz"
+                }
+              },
+              {
+                "id": "FLASHING_BOTH_REPEATING",
+                "label": {
+                  "en": "Both flashing",
+                  "de": "Beide blitzen"
+                }
+              },
+              {
+                "id": "CONFIRMATION_SIGNAL_0",
+                "label": {
+                  "en": "Confirmation 0",
+                  "de": "Bestätigung 0"
+                }
+              },
+              {
+                "id": "CONFIRMATION_SIGNAL_1",
+                "label": {
+                  "en": "Confirmation 1",
+                  "de": "Bestätigung 1"
+                }
+              },
+              {
+                "id": "CONFIRMATION_SIGNAL_2",
+                "label": {
+                  "en": "Confirmation 2",
+                  "de": "Bestätigung 2"
+                }
+              }
+            ]
+          },
+          {
+            "name": "duration",
+            "type": "number",
+            "title": {
+              "en": "Duration",
+              "de": "Dauer"
+            },
+            "min": 0,
+            "max": 16343,
+            "step": 1
+          },
+          {
+            "name": "unit",
+            "type": "dropdown",
+            "title": {
+              "en": "Unit",
+              "de": "Einheit"
+            },
+            "values": [
+              {
+                "id": "S",
+                "label": {
+                  "en": "Seconds",
+                  "de": "Sekunden"
+                }
+              },
+              {
+                "id": "M",
+                "label": {
+                  "en": "Minutes",
+                  "de": "Minuten"
+                }
+              },
+              {
+                "id": "H",
+                "label": {
+                  "en": "Hours",
+                  "de": "Stunden"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "set_hmip_siren_alarm"
+      },
+      {
+        "title": {
+          "en": "Stop HmIP siren alarm",
+          "de": "HmIP-Sirenenalarm stoppen"
+        },
+        "titleFormatted": {
+          "en": "Stop HmIP siren alarm",
+          "de": "HmIP-Sirenenalarm stoppen"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "title": {
+              "en": "Device",
+              "de": "Gerät"
+            },
+            "filter": "driver_id=HmIP-ASIR"
+          }
+        ],
+        "id": "stop_hmip_siren_alarm"
+      },
+      {
+        "title": {
           "en": "Move garage door to ventilation position",
           "de": "Garagentor in Lüftungsposition fahren"
         },
@@ -3821,294 +4096,6 @@
           }
         ],
         "id": "turn_garage_light_on"
-      },
-      {
-        "title": {
-          "en": "Start configurable HmIP siren alarm",
-          "de": "Konfigurierbaren HmIP-Sirenenalarm starten"
-        },
-        "titleFormatted": {
-          "en": "Start [[acoustic]] + [[optical]] for [[duration]] [[unit]]",
-          "de": "[[acoustic]] + [[optical]] für [[duration]] [[unit]] starten"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "title": {
-              "en": "Device",
-              "de": "Gerät"
-            },
-            "filter": "driver_id=HmIP-ASIR"
-          },
-          {
-            "name": "acoustic",
-            "type": "dropdown",
-            "title": {
-              "en": "Acoustic signal",
-              "de": "Akustisches Signal"
-            },
-            "values": [
-              {
-                "id": "DISABLE_ACOUSTIC_SIGNAL",
-                "label": {
-                  "en": "Off",
-                  "de": "Aus"
-                }
-              },
-              {
-                "id": "FREQUENCY_RISING",
-                "label": {
-                  "en": "Rising",
-                  "de": "Ansteigend"
-                }
-              },
-              {
-                "id": "FREQUENCY_FALLING",
-                "label": {
-                  "en": "Falling",
-                  "de": "Abfallend"
-                }
-              },
-              {
-                "id": "FREQUENCY_RISING_AND_FALLING",
-                "label": {
-                  "en": "Rising and falling",
-                  "de": "An- und absteigend"
-                }
-              },
-              {
-                "id": "FREQUENCY_ALTERNATING_LOW_HIGH",
-                "label": {
-                  "en": "Alternating low/high",
-                  "de": "Abwechselnd tief/hoch"
-                }
-              },
-              {
-                "id": "FREQUENCY_ALTERNATING_LOW_MID_HIGH",
-                "label": {
-                  "en": "Alternating low/mid/high",
-                  "de": "Abwechselnd tief/mittel/hoch"
-                }
-              },
-              {
-                "id": "FREQUENCY_HIGHON_OFF",
-                "label": {
-                  "en": "High on/off",
-                  "de": "Hoch ein/aus"
-                }
-              },
-              {
-                "id": "FREQUENCY_HIGHON_LONGOFF",
-                "label": {
-                  "en": "High on/long off",
-                  "de": "Hoch ein/lang aus"
-                }
-              },
-              {
-                "id": "FREQUENCY_LOWON_OFF_HIGHON_OFF",
-                "label": {
-                  "en": "Low/high pulse",
-                  "de": "Tief/Hoch-Puls"
-                }
-              },
-              {
-                "id": "FREQUENCY_LOWON_LONGOFF_HIGHON_LONGOFF",
-                "label": {
-                  "en": "Low/high long pulse",
-                  "de": "Tief/Hoch-Langpuls"
-                }
-              },
-              {
-                "id": "LOW_BATTERY",
-                "label": {
-                  "en": "Low battery",
-                  "de": "Batterie schwach"
-                }
-              },
-              {
-                "id": "DISARMED",
-                "label": {
-                  "en": "Disarmed",
-                  "de": "Unscharf"
-                }
-              },
-              {
-                "id": "INTERNALLY_ARMED",
-                "label": {
-                  "en": "Internally armed",
-                  "de": "Intern scharf"
-                }
-              },
-              {
-                "id": "EXTERNALLY_ARMED",
-                "label": {
-                  "en": "Externally armed",
-                  "de": "Extern scharf"
-                }
-              },
-              {
-                "id": "DELAYED_INTERNALLY_ARMED",
-                "label": {
-                  "en": "Delayed internally armed",
-                  "de": "Intern verzögert scharf"
-                }
-              },
-              {
-                "id": "DELAYED_EXTERNALLY_ARMED",
-                "label": {
-                  "en": "Delayed externally armed",
-                  "de": "Extern verzögert scharf"
-                }
-              },
-              {
-                "id": "EVENT",
-                "label": {
-                  "en": "Event",
-                  "de": "Ereignis"
-                }
-              },
-              {
-                "id": "ERROR",
-                "label": {
-                  "en": "Error",
-                  "de": "Fehler"
-                }
-              }
-            ]
-          },
-          {
-            "name": "optical",
-            "type": "dropdown",
-            "title": {
-              "en": "Optical signal",
-              "de": "Optisches Signal"
-            },
-            "values": [
-              {
-                "id": "DISABLE_OPTICAL_SIGNAL",
-                "label": {
-                  "en": "Off",
-                  "de": "Aus"
-                }
-              },
-              {
-                "id": "BLINKING_ALTERNATELY_REPEATING",
-                "label": {
-                  "en": "Alternating blinking",
-                  "de": "Abwechselnd blinken"
-                }
-              },
-              {
-                "id": "BLINKING_BOTH_REPEATING",
-                "label": {
-                  "en": "Both blinking",
-                  "de": "Beide blinken"
-                }
-              },
-              {
-                "id": "DOUBLE_FLASHING_REPEATING",
-                "label": {
-                  "en": "Double flash",
-                  "de": "Doppelblitz"
-                }
-              },
-              {
-                "id": "FLASHING_BOTH_REPEATING",
-                "label": {
-                  "en": "Both flashing",
-                  "de": "Beide blitzen"
-                }
-              },
-              {
-                "id": "CONFIRMATION_SIGNAL_0",
-                "label": {
-                  "en": "Confirmation 0",
-                  "de": "Bestätigung 0"
-                }
-              },
-              {
-                "id": "CONFIRMATION_SIGNAL_1",
-                "label": {
-                  "en": "Confirmation 1",
-                  "de": "Bestätigung 1"
-                }
-              },
-              {
-                "id": "CONFIRMATION_SIGNAL_2",
-                "label": {
-                  "en": "Confirmation 2",
-                  "de": "Bestätigung 2"
-                }
-              }
-            ]
-          },
-          {
-            "name": "duration",
-            "type": "number",
-            "title": {
-              "en": "Duration",
-              "de": "Dauer"
-            },
-            "min": 0,
-            "max": 16343,
-            "step": 1
-          },
-          {
-            "name": "unit",
-            "type": "dropdown",
-            "title": {
-              "en": "Unit",
-              "de": "Einheit"
-            },
-            "values": [
-              {
-                "id": "S",
-                "label": {
-                  "en": "Seconds",
-                  "de": "Sekunden"
-                }
-              },
-              {
-                "id": "M",
-                "label": {
-                  "en": "Minutes",
-                  "de": "Minuten"
-                }
-              },
-              {
-                "id": "H",
-                "label": {
-                  "en": "Hours",
-                  "de": "Stunden"
-                }
-              }
-            ]
-          }
-        ],
-        "id": "set_hmip_siren_alarm"
-      },
-      {
-        "title": {
-          "en": "Stop HmIP siren alarm",
-          "de": "HmIP-Sirenenalarm stoppen"
-        },
-        "titleFormatted": {
-          "en": "Stop HmIP siren alarm",
-          "de": "HmIP-Sirenenalarm stoppen"
-        },
-        "args": [
-          {
-            "name": "device",
-            "type": "device",
-            "title": {
-              "en": "Device",
-              "de": "Gerät"
-            },
-            "filter": "driver_id=HmIP-ASIR"
-          }
-        ],
-        "id": "stop_hmip_siren_alarm"
       }
     ]
   },
@@ -4120,9 +4107,7 @@
         "de": "HM-PB-2-FM"
       },
       "class": "button",
-      "capabilities": [
-        "alarm_battery"
-      ],
+      "capabilities": ["alarm_battery"],
       "images": {
         "large": "/drivers/HM-PB-2-FM/assets/images/large.png",
         "small": "/drivers/HM-PB-2-FM/assets/images/small.png"
@@ -4141,10 +4126,7 @@
         }
       ],
       "energy": {
-        "batteries": [
-          "AAA",
-          "AAA"
-        ]
+        "batteries": ["AAA", "AAA"]
       }
     },
     {
@@ -4178,9 +4160,7 @@
         }
       ],
       "energy": {
-        "batteries": [
-          "CR2032"
-        ]
+        "batteries": ["CR2032"]
       },
       "capabilitiesOptions": {
         "alarm_contact": {
@@ -4236,10 +4216,7 @@
         }
       ],
       "energy": {
-        "batteries": [
-          "C",
-          "C"
-        ]
+        "batteries": ["C", "C"]
       },
       "capabilitiesOptions": {
         "onoff": {
@@ -4295,9 +4272,7 @@
         "de": "HmIP Schalt- und Messsteckdosen"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HMIP-PSM/assets/images/large.png",
         "small": "/drivers/HMIP-PSM/assets/images/small.png"
@@ -4323,9 +4298,7 @@
         "de": "HmIP-SWDO Fenster-/Türkontakte"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_contact"
-      ],
+      "capabilities": ["alarm_contact"],
       "images": {
         "large": "/drivers/HMIP-SWDO/assets/images/large.png",
         "small": "/drivers/HMIP-SWDO/assets/images/small.png"
@@ -4497,10 +4470,7 @@
         "en": "HmIP-BDT"
       },
       "class": "light",
-      "capabilities": [
-        "onoff",
-        "dim"
-      ],
+      "capabilities": ["onoff", "dim"],
       "images": {
         "large": "/drivers/HmIP-BDT/assets/images/large.png",
         "small": "/drivers/HmIP-BDT/assets/images/small.png"
@@ -4576,10 +4546,7 @@
         "de": "HmIP-BROLL / BROLL-2"
       },
       "class": "blinds",
-      "capabilities": [
-        "windowcoverings_set",
-        "windowcoverings_state"
-      ],
+      "capabilities": ["windowcoverings_set", "windowcoverings_state"],
       "images": {
         "large": "/drivers/HmIP-BROLL/assets/images/large.png",
         "small": "/drivers/HmIP-BROLL/assets/images/small.png"
@@ -4604,9 +4571,7 @@
         "en": "HmIP-BS2"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-BS2/assets/images/large.png",
         "small": "/drivers/HmIP-BS2/assets/images/small.png"
@@ -4632,9 +4597,7 @@
         "de": "HmIP-BSL"
       },
       "class": "light",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "small": "/drivers/HmIP-BSL/assets/images/small.png",
         "large": "/drivers/HmIP-BSL/assets/images/large.png"
@@ -4753,9 +4716,7 @@
         "en": "HmIP-DLD"
       },
       "class": "lock",
-      "capabilities": [
-        "locked"
-      ],
+      "capabilities": ["locked"],
       "images": {
         "large": "/drivers/HmIP-DLD/assets/images/large.png",
         "small": "/drivers/HmIP-DLD/assets/images/small.png"
@@ -4781,9 +4742,7 @@
         "de": "HmIP-DLP"
       },
       "class": "lock",
-      "capabilities": [
-        "alarm_contact"
-      ],
+      "capabilities": ["alarm_contact"],
       "images": {
         "small": "/drivers/HmIP-DLP/assets/images/small.png",
         "large": "/drivers/HmIP-DLP/assets/images/large.png"
@@ -4809,9 +4768,7 @@
         "de": "HmIP-DLS"
       },
       "class": "sensor",
-      "capabilities": [
-        "homematic_lock_state"
-      ],
+      "capabilities": ["homematic_lock_state"],
       "images": {
         "small": "/drivers/HmIP-DLS/assets/images/small.png",
         "large": "/drivers/HmIP-DLS/assets/images/large.png"
@@ -4862,10 +4819,7 @@
         "en": "HmIP-DRDI3"
       },
       "class": "light",
-      "capabilities": [
-        "onoff",
-        "dim"
-      ],
+      "capabilities": ["onoff", "dim"],
       "images": {
         "large": "/drivers/HmIP-DRDI3/assets/images/large.png",
         "small": "/drivers/HmIP-DRDI3/assets/images/small.png"
@@ -4890,12 +4844,7 @@
         "en": "HmIP-DRG-DALI"
       },
       "class": "light",
-      "capabilities": [
-        "onoff",
-        "dim",
-        "light_hue",
-        "light_saturation"
-      ],
+      "capabilities": ["onoff", "dim", "light_hue", "light_saturation"],
       "images": {
         "large": "/drivers/HmIP-DRG-DALI/assets/images/large.png",
         "small": "/drivers/HmIP-DRG-DALI/assets/images/small.png"
@@ -4920,9 +4869,7 @@
         "en": "HmIP-DRSI1"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-DRSI1/assets/images/large.png",
         "small": "/drivers/HmIP-DRSI1/assets/images/small.png"
@@ -4947,9 +4894,7 @@
         "en": "HmIP-DRSI4"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-DRSI4/assets/images/large.png",
         "small": "/drivers/HmIP-DRSI4/assets/images/small.png"
@@ -5084,9 +5029,7 @@
         "de": "HmIP-FALMOT-C12"
       },
       "class": "sensor",
-      "capabilities": [
-        "homematic_measure_valve"
-      ],
+      "capabilities": ["homematic_measure_valve"],
       "images": {
         "large": "/drivers/HmIP-FALMOT-C12/assets/images/large.png",
         "small": "/drivers/HmIP-FALMOT-C12/assets/images/small.png"
@@ -5154,9 +5097,7 @@
         "en": "HmIP-FCI1"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_contact"
-      ],
+      "capabilities": ["alarm_contact"],
       "images": {
         "large": "/drivers/HmIP-FCI1/assets/images/large.png",
         "small": "/drivers/HmIP-FCI1/assets/images/small.png"
@@ -5207,10 +5148,7 @@
         "en": "HmIP-FDT"
       },
       "class": "light",
-      "capabilities": [
-        "onoff",
-        "dim"
-      ],
+      "capabilities": ["onoff", "dim"],
       "images": {
         "large": "/drivers/HmIP-FDT/assets/images/large.png",
         "small": "/drivers/HmIP-FDT/assets/images/small.png"
@@ -5235,10 +5173,7 @@
         "en": "HmIP-FROLL"
       },
       "class": "blinds",
-      "capabilities": [
-        "windowcoverings_set",
-        "windowcoverings_state"
-      ],
+      "capabilities": ["windowcoverings_set", "windowcoverings_state"],
       "images": {
         "large": "/drivers/HmIP-FROLL/assets/images/large.png",
         "small": "/drivers/HmIP-FROLL/assets/images/small.png"
@@ -5263,9 +5198,7 @@
         "en": "HmIP-FS6"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-FS6/assets/images/large.png",
         "small": "/drivers/HmIP-FS6/assets/images/small.png"
@@ -5290,9 +5223,7 @@
         "en": "HmIP-FSI"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-FSI/assets/images/large.png",
         "small": "/drivers/HmIP-FSI/assets/images/small.png"
@@ -5317,9 +5248,7 @@
         "en": "HmIP-FSI16"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-FSI16/assets/images/large.png",
         "small": "/drivers/HmIP-FSI16/assets/images/small.png"
@@ -5344,9 +5273,7 @@
         "en": "HmIP-FSI6"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-FSI6/assets/images/large.png",
         "small": "/drivers/HmIP-FSI6/assets/images/small.png"
@@ -5564,9 +5491,7 @@
         "de": "HmIP-LSC"
       },
       "class": "light",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "small": "/drivers/HmIP-LSC/assets/images/small.png",
         "large": "/drivers/HmIP-LSC/assets/images/large.png"
@@ -5704,9 +5629,7 @@
         "en": "HmIP-MOD-OC8"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-MOD-OC8/assets/images/large.png",
         "small": "/drivers/HmIP-MOD-OC8/assets/images/small.png"
@@ -5757,9 +5680,7 @@
         "en": "HmIP-MOD-TM"
       },
       "class": "garagedoor",
-      "capabilities": [
-        "garagedoor_closed"
-      ],
+      "capabilities": ["garagedoor_closed"],
       "images": {
         "large": "/drivers/HmIP-MOD-TM/assets/images/large.png",
         "small": "/drivers/HmIP-MOD-TM/assets/images/small.png"
@@ -5810,9 +5731,7 @@
         "en": "HmIP-PCBS"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-PCBS/assets/images/large.png",
         "small": "/drivers/HmIP-PCBS/assets/images/small.png"
@@ -5837,9 +5756,7 @@
         "en": "HmIP-PCBS-BAT"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-PCBS-BAT/assets/images/large.png",
         "small": "/drivers/HmIP-PCBS-BAT/assets/images/small.png"
@@ -5864,9 +5781,7 @@
         "en": "HmIP-PCBS2"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-PCBS2/assets/images/large.png",
         "small": "/drivers/HmIP-PCBS2/assets/images/small.png"
@@ -5891,10 +5806,7 @@
         "en": "HmIP-PDT"
       },
       "class": "light",
-      "capabilities": [
-        "onoff",
-        "dim"
-      ],
+      "capabilities": ["onoff", "dim"],
       "images": {
         "large": "/drivers/HmIP-PDT/assets/images/large.png",
         "small": "/drivers/HmIP-PDT/assets/images/small.png"
@@ -5920,9 +5832,7 @@
         "de": "HmIP-PMFS"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_generic.power_failure"
-      ],
+      "capabilities": ["alarm_generic.power_failure"],
       "images": {
         "small": "/drivers/HmIP-PMFS/assets/images/small.png",
         "large": "/drivers/HmIP-PMFS/assets/images/large.png"
@@ -6032,10 +5942,7 @@
         "en": "HmIP-RGBW"
       },
       "class": "light",
-      "capabilities": [
-        "onoff",
-        "dim"
-      ],
+      "capabilities": ["onoff", "dim"],
       "images": {
         "large": "/drivers/HmIP-RGBW/assets/images/large.png",
         "small": "/drivers/HmIP-RGBW/assets/images/small.png"
@@ -6060,9 +5967,7 @@
         "en": "HmIP-SAM"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_motion"
-      ],
+      "capabilities": ["alarm_motion"],
       "images": {
         "large": "/drivers/HmIP-SAM/assets/images/large.png",
         "small": "/drivers/HmIP-SAM/assets/images/small.png"
@@ -6087,9 +5992,7 @@
         "en": "HmIP-SCI"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_contact"
-      ],
+      "capabilities": ["alarm_contact"],
       "images": {
         "large": "/drivers/HmIP-SCI/assets/images/large.png",
         "small": "/drivers/HmIP-SCI/assets/images/small.png"
@@ -6196,9 +6099,7 @@
         "en": "HmIP-SLO"
       },
       "class": "sensor",
-      "capabilities": [
-        "measure_luminance"
-      ],
+      "capabilities": ["measure_luminance"],
       "images": {
         "large": "/drivers/HmIP-SLO/assets/images/large.png",
         "small": "/drivers/HmIP-SLO/assets/images/small.png"
@@ -6223,10 +6124,7 @@
         "en": "HmIP-SMI"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_motion",
-        "measure_luminance"
-      ],
+      "capabilities": ["alarm_motion", "measure_luminance"],
       "images": {
         "large": "/drivers/HmIP-SMI/assets/images/large.png",
         "small": "/drivers/HmIP-SMI/assets/images/small.png"
@@ -6251,10 +6149,7 @@
         "en": "HmIP-SMI55"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_motion",
-        "measure_luminance"
-      ],
+      "capabilities": ["alarm_motion", "measure_luminance"],
       "images": {
         "large": "/drivers/HmIP-SMI55/assets/images/large.png",
         "small": "/drivers/HmIP-SMI55/assets/images/small.png"
@@ -6279,10 +6174,7 @@
         "en": "HmIP-SMO-A"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_motion",
-        "measure_luminance"
-      ],
+      "capabilities": ["alarm_motion", "measure_luminance"],
       "images": {
         "large": "/drivers/HmIP-SMO-A/assets/images/large.png",
         "small": "/drivers/HmIP-SMO-A/assets/images/small.png"
@@ -6363,10 +6255,7 @@
         "en": "HmIP-SPI"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_motion",
-        "measure_luminance"
-      ],
+      "capabilities": ["alarm_motion", "measure_luminance"],
       "images": {
         "large": "/drivers/HmIP-SPI/assets/images/large.png",
         "small": "/drivers/HmIP-SPI/assets/images/small.png"
@@ -6429,9 +6318,7 @@
         "en": "HmIP-SRH"
       },
       "class": "sensor",
-      "capabilities": [
-        "homematic_rhs_state"
-      ],
+      "capabilities": ["homematic_rhs_state"],
       "images": {
         "large": "/drivers/HmIP-SRH/assets/images/large.png",
         "small": "/drivers/HmIP-SRH/assets/images/small.png"
@@ -6505,10 +6392,7 @@
         "en": "HmIP-STH"
       },
       "class": "thermostat",
-      "capabilities": [
-        "measure_temperature",
-        "measure_humidity"
-      ],
+      "capabilities": ["measure_temperature", "measure_humidity"],
       "images": {
         "large": "/drivers/HmIP-STH/assets/images/large.png",
         "small": "/drivers/HmIP-STH/assets/images/small.png"
@@ -6538,10 +6422,7 @@
         "en": "HmIP-STHD"
       },
       "class": "thermostat",
-      "capabilities": [
-        "measure_temperature",
-        "measure_humidity"
-      ],
+      "capabilities": ["measure_temperature", "measure_humidity"],
       "images": {
         "large": "/drivers/HmIP-STHD/assets/images/large.png",
         "small": "/drivers/HmIP-STHD/assets/images/small.png"
@@ -6571,10 +6452,7 @@
         "en": "HmIP-STHO"
       },
       "class": "sensor",
-      "capabilities": [
-        "measure_temperature",
-        "measure_humidity"
-      ],
+      "capabilities": ["measure_temperature", "measure_humidity"],
       "images": {
         "large": "/drivers/HmIP-STHO/assets/images/large.png",
         "small": "/drivers/HmIP-STHO/assets/images/small.png"
@@ -6599,9 +6477,7 @@
         "en": "HmIP-SWD"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_water"
-      ],
+      "capabilities": ["alarm_water"],
       "images": {
         "large": "/drivers/HmIP-SWD/assets/images/large.png",
         "small": "/drivers/HmIP-SWD/assets/images/small.png"
@@ -6626,9 +6502,7 @@
         "en": "HmIP-SWDM"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_contact"
-      ],
+      "capabilities": ["alarm_contact"],
       "images": {
         "large": "/drivers/HmIP-SWDM/assets/images/large.png",
         "small": "/drivers/HmIP-SWDM/assets/images/small.png"
@@ -6799,9 +6673,7 @@
         "en": "HmIP-SWSD"
       },
       "class": "smokealarm",
-      "capabilities": [
-        "alarm_smoke"
-      ],
+      "capabilities": ["alarm_smoke"],
       "images": {
         "large": "/drivers/HmIP-SWSD/assets/images/large.png",
         "small": "/drivers/HmIP-SWSD/assets/images/small.png"
@@ -6852,9 +6724,7 @@
         "en": "HmIP-USBSM"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-USBSM/assets/images/large.png",
         "small": "/drivers/HmIP-USBSM/assets/images/small.png"
@@ -6879,9 +6749,7 @@
         "en": "HmIP-WGC"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-WGC/assets/images/large.png",
         "small": "/drivers/HmIP-WGC/assets/images/small.png"
@@ -6958,9 +6826,7 @@
         "en": "HmIP-WHS2"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIP-WHS2/assets/images/large.png",
         "small": "/drivers/HmIP-WHS2/assets/images/small.png"
@@ -6986,9 +6852,7 @@
         "de": "HmIP-WKP"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_tamper"
-      ],
+      "capabilities": ["alarm_tamper"],
       "images": {
         "small": "/drivers/HmIP-WKP/assets/images/small.png",
         "large": "/drivers/HmIP-WKP/assets/images/large.png"
@@ -7116,11 +6980,7 @@
         "en": "HmIP-WSM"
       },
       "class": "other",
-      "capabilities": [
-        "onoff",
-        "measure_water",
-        "meter_water"
-      ],
+      "capabilities": ["onoff", "measure_water", "meter_water"],
       "images": {
         "large": "/drivers/HmIP-WSM/assets/images/large.png",
         "small": "/drivers/HmIP-WSM/assets/images/small.png"
@@ -7448,9 +7308,7 @@
         "de": "HmIPW-DRD3"
       },
       "class": "light",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "small": "/drivers/HmIPW-DRD3/assets/images/small.png",
         "large": "/drivers/HmIPW-DRD3/assets/images/large.png"
@@ -7526,9 +7384,7 @@
         "en": "HmIPW-DRS8"
       },
       "class": "socket",
-      "capabilities": [
-        "onoff"
-      ],
+      "capabilities": ["onoff"],
       "images": {
         "large": "/drivers/HmIPW-DRS8/assets/images/large.png",
         "small": "/drivers/HmIPW-DRS8/assets/images/small.png"
@@ -7641,10 +7497,7 @@
         "en": "HmIPW-SPI"
       },
       "class": "sensor",
-      "capabilities": [
-        "alarm_motion",
-        "measure_luminance"
-      ],
+      "capabilities": ["alarm_motion", "measure_luminance"],
       "images": {
         "large": "/drivers/HmIPW-SPI/assets/images/large.png",
         "small": "/drivers/HmIPW-SPI/assets/images/small.png"
@@ -7924,6 +7777,64 @@
     }
   },
   "capabilities": {
+    "homematic_acoustic_alarm_active": {
+      "type": "boolean",
+      "title": {
+        "en": "Acoustic alarm active",
+        "de": "Akustischer Alarm aktiv"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true
+    },
+    "homematic_optical_alarm_active": {
+      "type": "boolean",
+      "title": {
+        "en": "Optical alarm active",
+        "de": "Optischer Alarm aktiv"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true
+    },
+    "homematic_rssi_device": {
+      "type": "number",
+      "title": {
+        "en": "RSSI device",
+        "de": "RSSI Gerät"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "units": {
+        "en": "dBm",
+        "de": "dBm"
+      },
+      "decimals": 0,
+      "min": -127,
+      "max": -1
+    },
+    "homematic_rssi_peer": {
+      "type": "number",
+      "title": {
+        "en": "RSSI peer",
+        "de": "RSSI Peer"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "units": {
+        "en": "dBm",
+        "de": "dBm"
+      },
+      "decimals": 0,
+      "min": -127,
+      "max": -1
+    },
     "homematic_detection_active": {
       "type": "boolean",
       "title": {
@@ -8624,64 +8535,6 @@
       "getable": true,
       "setable": false,
       "insights": false
-    },
-    "homematic_rssi_device": {
-      "type": "number",
-      "title": {
-        "en": "RSSI device",
-        "de": "RSSI Gerät"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor",
-      "insights": true,
-      "units": {
-        "en": "dBm",
-        "de": "dBm"
-      },
-      "decimals": 0,
-      "min": -127,
-      "max": -1
-    },
-    "homematic_rssi_peer": {
-      "type": "number",
-      "title": {
-        "en": "RSSI peer",
-        "de": "RSSI Peer"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor",
-      "insights": true,
-      "units": {
-        "en": "dBm",
-        "de": "dBm"
-      },
-      "decimals": 0,
-      "min": -127,
-      "max": -1
-    },
-    "homematic_acoustic_alarm_active": {
-      "type": "boolean",
-      "title": {
-        "en": "Acoustic alarm active",
-        "de": "Akustischer Alarm aktiv"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor",
-      "insights": true
-    },
-    "homematic_optical_alarm_active": {
-      "type": "boolean",
-      "title": {
-        "en": "Optical alarm active",
-        "de": "Optischer Alarm aktiv"
-      },
-      "getable": true,
-      "setable": false,
-      "uiComponent": "sensor",
-      "insights": true
     }
   }
 }
