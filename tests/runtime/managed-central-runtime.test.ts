@@ -63,11 +63,40 @@ describe("ManagedCentralRuntimeFactory", () => {
 
     expect(order).toEqual(["ready", "register", "deregister", "close"]);
     expect(init).toHaveBeenCalledWith(
-      "http://192.0.2.20:12010",
+      "http://192.0.2.20:12110",
       "HmIP-RF",
       expect.any(AbortSignal),
     );
     expect(close).toHaveBeenCalledOnce();
+  });
+
+  it("can namespace callback registration ids for parallel integrations", async () => {
+    const { client, init } = createClient();
+    const factory = new ManagedCentralRuntimeFactory({
+      callbackAdvertisedHost: "192.0.2.20",
+      callbackClientIdPrefix: "io.github.pinewoodblood.openccu",
+      createClient: () => client,
+      createCallbackServer: () => ({
+        ready: vi.fn().mockResolvedValue(undefined),
+        close: vi.fn().mockResolvedValue(undefined),
+      }),
+    });
+
+    const runtime = await factory.create(
+      parseOpenCcuSettings({ centralId: "ccu-1", host: "openccu.local" }),
+    );
+    await new Promise((resolve) => setImmediate(resolve));
+    expect(init).toHaveBeenCalledWith(
+      "http://192.0.2.20:12110",
+      "io.github.pinewoodblood.openccu:HmIP-RF",
+      expect.any(AbortSignal),
+    );
+    await runtime.stop();
+    expect(init).toHaveBeenLastCalledWith(
+      "",
+      "io.github.pinewoodblood.openccu:HmIP-RF",
+      expect.any(AbortSignal),
+    );
   });
 
   it("reports credential-free supervisor states to the host adapter", async () => {
@@ -157,14 +186,14 @@ describe("ManagedCentralRuntimeFactory", () => {
       "HmIP-RF",
       "VirtualDevices",
     ]);
-    expect(callbackPorts).toEqual([12010, 12011]);
+    expect(callbackPorts).toEqual([12110, 12111]);
     expect(primary.init).toHaveBeenCalledWith(
-      "http://192.0.2.20:12010",
+      "http://192.0.2.20:12110",
       "HmIP-RF",
       expect.any(AbortSignal),
     );
     expect(virtual.init).toHaveBeenCalledWith(
-      "http://192.0.2.20:12011",
+      "http://192.0.2.20:12111",
       "VirtualDevices",
       expect.any(AbortSignal),
     );
@@ -204,11 +233,11 @@ describe("ManagedCentralRuntimeFactory", () => {
 
 describe("buildCallbackUrl", () => {
   it("formats IPv4, host names, and IPv6 callback addresses", () => {
-    expect(buildCallbackUrl("homey.local", 12010)).toBe(
-      "http://homey.local:12010",
+    expect(buildCallbackUrl("homey.local", 12110)).toBe(
+      "http://homey.local:12110",
     );
-    expect(buildCallbackUrl("2001:db8::1", 12010)).toBe(
-      "http://[2001:db8::1]:12010",
+    expect(buildCallbackUrl("2001:db8::1", 12110)).toBe(
+      "http://[2001:db8::1]:12110",
     );
   });
 });
@@ -244,11 +273,11 @@ describe("optional classic Homematic transport", () => {
           enableBidCosRf ? 1 : 0,
         );
         expect(servers.map((s) => s.port)).toEqual(
-          enableBidCosRf ? [12010, 12012] : [12010],
+          enableBidCosRf ? [12110, 12112] : [12110],
         );
         if (enableBidCosRf) {
           expect(classic.init).toHaveBeenCalledWith(
-            "http://192.0.2.20:12012",
+            "http://192.0.2.20:12112",
             "BidCos-RF",
             expect.any(AbortSignal),
           );
