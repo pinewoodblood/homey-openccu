@@ -25,3 +25,9 @@ The fork uses callback ports 12110/12111/12112 by default instead of the
 upstream 12010/12011/12012 set. It also registers CCU XML-RPC callbacks with
 the fork app id as a prefix. This prevents the enhanced fork from replacing
 the upstream app's CCU callback registration during side-by-side testing.
+
+## Validation
+
+The fork retains the upstream GitHub Actions quality gate: formatting, lint,
+strict TypeScript checks, unit tests, application build, Homey publish-level
+manifest validation and the production dependency audit.
