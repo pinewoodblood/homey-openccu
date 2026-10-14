@@ -12,23 +12,10 @@
     "de": "Erweiterte lokale Homematic-IP-Integration über CCU/OpenCCU"
   },
   "tags": {
-    "en": [
-      "OpenCCU",
-      "Homematic IP",
-      "HmIP",
-      "local"
-    ],
-    "de": [
-      "OpenCCU",
-      "Homematic IP",
-      "HmIP",
-      "lokal"
-    ]
+    "en": ["OpenCCU", "Homematic IP", "HmIP", "local"],
+    "de": ["OpenCCU", "Homematic IP", "HmIP", "lokal"]
   },
-  "category": [
-    "tools",
-    "appliances"
-  ],
+  "category": ["tools", "appliances"],
   "permissions": [],
   "api": {
     "getDiscovery": {
