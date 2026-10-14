@@ -59,7 +59,7 @@ describe("optional BidCos-RF configuration", () => {
     ).toMatchObject({
       enableBidCosRf: false,
       bidCosRfPort: 2001,
-      bidCosRfCallbackPort: 12012,
+      bidCosRfCallbackPort: 12112,
     });
     expect(
       parseOpenCcuSettings({
@@ -73,8 +73,8 @@ describe("optional BidCos-RF configuration", () => {
   it.each([
     { enableBidCosRf: "true" },
     { enableBidCosRf: true, bidCosRfPort: 0 },
-    { enableBidCosRf: true, bidCosRfCallbackPort: 12010 },
-    { enableBidCosRf: true, bidCosRfCallbackPort: 12011 },
+    { enableBidCosRf: true, bidCosRfCallbackPort: 12110 },
+    { enableBidCosRf: true, bidCosRfCallbackPort: 12111 },
   ])("rejects invalid classic settings %j", (input) => {
     expect(() =>
       parseOpenCcuSettings({

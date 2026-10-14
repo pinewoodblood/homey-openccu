@@ -87,7 +87,7 @@ describe("status Flow coverage", () => {
         ).toThrow();
     },
   );
-  it("covers every readable custom capability except existing garage/handle cards and organization tags", () => {
+  it("covers every readable custom capability except existing garage/handle cards, diagnostics and organization tags", () => {
     const app = JSON.parse(readFileSync("app.json", "utf8")) as {
       capabilities: Record<string, { getable: boolean }>;
     };
@@ -95,6 +95,10 @@ describe("status Flow coverage", () => {
       "homematic_rhs_state",
       "homematic_garage_state",
       "homematic_garage_light",
+      "homematic_acoustic_alarm_active",
+      "homematic_optical_alarm_active",
+      "homematic_rssi_device",
+      "homematic_rssi_peer",
       "openccu_room",
       "openccu_functions",
     ];

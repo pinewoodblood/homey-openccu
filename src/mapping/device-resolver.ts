@@ -4,6 +4,10 @@ import { mapGenericDevice } from "./generic-mapper";
 import type { ButtonEventBinding, CapabilityBinding } from "./types";
 import { ProfileRegistry } from "../profiles/registry";
 import {
+  mergeCapabilityBindings,
+  resolveHmIpMaintenanceBindings,
+} from "../profiles/maintenance";
+import {
   resolveProfileButtonEvents,
   type DeviceProfile,
   type LogicalDeviceProfile,
@@ -28,6 +32,7 @@ export function resolveDeviceMapping(
   profiles = new ProfileRegistry(),
   logicalId?: string,
   preserveLegacyGeneric = false,
+  includeMaintenance = false,
 ): ResolvedDeviceMapping {
   const profile = profiles.find(device.type);
   // A previously paired generic parent has no logical-channel identity. Keep
@@ -37,11 +42,23 @@ export function resolveDeviceMapping(
     logicalId === undefined &&
     profile?.logicalDevices !== undefined
   ) {
-    return resolveDeviceMapping(device, new ProfileRegistry([]));
+    return resolveDeviceMapping(
+      device,
+      new ProfileRegistry([]),
+      undefined,
+      false,
+      includeMaintenance,
+    );
   }
   if (profile) {
     const logical = selectLogicalDevice(profile, logicalId);
-    return resolveKnownDeviceMapping(device, profiles, profile, logical);
+    return resolveKnownDeviceMapping(
+      device,
+      profiles,
+      profile,
+      logical,
+      includeMaintenance,
+    );
   }
   if (logicalId !== undefined) {
     throw new Error(
@@ -49,10 +66,16 @@ export function resolveDeviceMapping(
     );
   }
   const decisions = new MappingDecisionLog();
+  const genericBindings = mapGenericDevice(device, decisions);
   return {
     driverId: GENERIC_DRIVER_ID,
     generic: true,
-    bindings: mapGenericDevice(device, decisions),
+    bindings: includeMaintenance
+      ? mergeCapabilityBindings(
+          genericBindings,
+          resolveHmIpMaintenanceBindings(device),
+        )
+      : genericBindings,
     buttonEvents: [],
     decisions: decisions.list(),
   };
@@ -66,7 +89,7 @@ export function resolveDeviceMappings(
   if (profile?.logicalDevices !== undefined) {
     return profile.logicalDevices
       .map((logical) =>
-        resolveKnownDeviceMapping(device, profiles, profile, logical),
+        resolveKnownDeviceMapping(device, profiles, profile, logical, false),
       )
       .filter(
         ({ bindings, buttonEvents }) =>
@@ -81,9 +104,18 @@ function resolveKnownDeviceMapping(
   profiles: ProfileRegistry,
   profile: DeviceProfile,
   logical: LogicalDeviceProfile | undefined,
+  includeMaintenance: boolean,
 ): ResolvedDeviceMapping {
   const decisions = new MappingDecisionLog();
   const definition = logical ?? profile;
+  const profileBindings = profiles.resolve(device, decisions, logical?.id);
+  const bindings =
+    includeMaintenance && logical === undefined
+      ? mergeCapabilityBindings(
+          profileBindings,
+          resolveHmIpMaintenanceBindings(device),
+        )
+      : profileBindings;
   return {
     driverId: profile.driverId,
     profileId: profile.id,
@@ -97,7 +129,7 @@ function resolveKnownDeviceMapping(
             : { nameChannel: logical.nameChannel }),
         }),
     generic: false,
-    bindings: profiles.resolve(device, decisions, logical?.id),
+    bindings,
     buttonEvents: resolveProfileButtonEvents(device, definition),
     decisions: decisions.list(),
   };

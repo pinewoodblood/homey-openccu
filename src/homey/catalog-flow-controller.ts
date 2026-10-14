@@ -1,11 +1,19 @@
 import type { FlowManager } from "./thermostat-flow-controller";
 import type { RpcValue } from "../protocol/xmlrpc/types";
+import {
+  parseHmIpSirenAlarmCommand,
+  STOP_HMIP_SIREN_ALARM,
+  type HmIpSirenAlarmCommand,
+} from "../runtime/hmip-siren";
 interface Device {
   hasCapability(capability: string): boolean;
   triggerCapabilityListener(
     capability: string,
     value: RpcValue,
   ): Promise<unknown>;
+}
+interface HmIpSirenDevice {
+  executeHmIpSirenAlarm(command: HmIpSirenAlarmCommand): Promise<void>;
 }
 function device(value: unknown, capability: string): Device {
   const d = value as Partial<Device> | null;
@@ -18,7 +26,30 @@ function device(value: unknown, capability: string): Device {
     throw new Error("Selected device does not support this function");
   return d as Device;
 }
+function hmIpSirenDevice(value: unknown): HmIpSirenDevice {
+  const d = value as Partial<HmIpSirenDevice> | null;
+  if (!d || typeof d.executeHmIpSirenAlarm !== "function")
+    throw new Error(
+      "Selected device does not support configurable HmIP alarms",
+    );
+  return d as HmIpSirenDevice;
+}
 export function registerCatalogFlowCards(flow: FlowManager): void {
+  flow
+    .getActionCard("set_hmip_siren_alarm")
+    .registerRunListener((args) =>
+      hmIpSirenDevice(args.device).executeHmIpSirenAlarm(
+        parseHmIpSirenAlarmCommand(args),
+      ),
+    );
+  flow
+    .getActionCard("stop_hmip_siren_alarm")
+    .registerRunListener((args) =>
+      hmIpSirenDevice(args.device).executeHmIpSirenAlarm(
+        STOP_HMIP_SIREN_ALARM,
+      ),
+    );
+
   const register = (
     id: string,
     resolve: (

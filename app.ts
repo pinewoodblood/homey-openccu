@@ -53,6 +53,7 @@ export = class OpenCcuApp extends Homey.App {
     );
     const factory = new ManagedCentralRuntimeFactory({
       callbackAdvertisedHost: callbackHostFromLocalAddress(localAddress),
+      callbackClientIdPrefix: this.id,
       descriptionCache,
       enableVirtualDevices: true,
       onConnectionState: (_centralId, interfaceId, state, error) => {

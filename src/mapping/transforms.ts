@@ -117,6 +117,23 @@ export function transformFromOpenCcu(
       return numeric(value, transform) > 0;
     case "ratio-to-percent":
       return numeric(value, transform) * 100;
+    case "rssi-dbm": {
+      const rssi = numeric(value, transform);
+      if (!Number.isInteger(rssi)) throw invalidTransform(transform, value);
+      // Homematic RSSI values exist in signed and unsigned encodings.
+      // Sentinel/invalid edge values are represented as unknown.
+      if (rssi > -127 && rssi < 0) return rssi;
+      if (rssi > 1 && rssi < 127) return -rssi;
+      if (rssi > -256 && rssi < -129) return -rssi - 256;
+      if (rssi > 129 && rssi < 256) return rssi - 256;
+      return null;
+    }
+    case "normal-status-to-alarm":
+      if (value === "NORMAL" || value === 0) return false;
+      if (typeof value === "string" && value.length > 0) return true;
+      if (typeof value === "number" && Number.isInteger(value))
+        return value !== 0;
+      throw invalidTransform(transform, value);
     case "smoke-status-to-boolean":
       if (typeof value === "string") return value !== "IDLE_OFF";
       throw invalidTransform(transform, value);
@@ -155,6 +172,8 @@ export function transformToOpenCcu(
       throw invalidTransform(transform, value);
     case "activity-state-to-cover-state":
     case "degrees-to-compass-8":
+    case "rssi-dbm":
+    case "normal-status-to-alarm":
       throw invalidTransform(transform, value);
     case "identity":
     case "boolean":

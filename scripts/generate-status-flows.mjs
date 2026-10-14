@@ -8,6 +8,10 @@ const excluded = new Set([
   "homematic_rhs_state",
   "homematic_garage_state",
   "homematic_garage_light",
+  "homematic_acoustic_alarm_active",
+  "homematic_optical_alarm_active",
+  "homematic_rssi_device",
+  "homematic_rssi_peer",
   "openccu_room",
   "openccu_functions",
 ]);

@@ -241,7 +241,10 @@ describe("profile write targets", () => {
       ]),
     }).get("701");
     expect(device).toBeDefined();
-    expect(resolveDeviceMapping(device!).bindings[0]).toMatchObject({
+    const onoff = resolveDeviceMapping(device!).bindings.find(
+      ({ capability }) => capability === "onoff",
+    );
+    expect(onoff).toMatchObject({
       capability: "onoff",
       parameter: "ACOUSTIC_ALARM_ACTIVE",
       writeParameter: "ACOUSTIC_ALARM_SELECTION",

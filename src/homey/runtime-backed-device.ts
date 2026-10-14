@@ -12,13 +12,19 @@ import type { RpcValue } from "../protocol/xmlrpc/types";
 import { resolveDeviceMapping } from "../mapping/device-resolver";
 import { resolveOrganizationCapabilities } from "./device-organization-capabilities";
 import { safeErrorKind } from "../diagnostics/safe-error";
+import type { OpenCcuRuntime } from "../runtime/openccu-runtime";
+import type { HmIpSirenAlarmCommand } from "../runtime/hmip-siren";
 
 export abstract class RuntimeBackedDevice extends Homey.Device {
   #controller?: DeviceBindingController;
+  #runtime?: OpenCcuRuntime;
+  #address?: string;
 
   async refreshOpenCcuRuntime(): Promise<void> {
     this.#controller?.stop();
     this.#controller = undefined;
+    this.#runtime = undefined;
+    this.#address = undefined;
     await this.onInit();
   }
 
@@ -46,6 +52,8 @@ export abstract class RuntimeBackedDevice extends Homey.Device {
       await this.setUnavailable("Configured OpenCCU is unavailable");
       return;
     }
+    this.#runtime = runtime;
+    this.#address = data.address;
 
     try {
       const bindings = parseStoredBindings(
@@ -65,6 +73,7 @@ export abstract class RuntimeBackedDevice extends Homey.Device {
                   undefined,
                   logicalId,
                   preserveLegacyGeneric,
+                  true,
                 ).bindings;
           },
           resolveButtonEvents: () => {
@@ -107,8 +116,18 @@ export abstract class RuntimeBackedDevice extends Homey.Device {
     }
   }
 
+  async executeHmIpSirenAlarm(
+    command: HmIpSirenAlarmCommand,
+  ): Promise<void> {
+    if (this.#runtime === undefined || this.#address === undefined)
+      throw new Error("OpenCCU runtime is not initialized");
+    await this.#runtime.setHmIpSirenAlarm(this.#address, command);
+  }
+
   onUninit(): Promise<void> {
     this.#controller?.stop();
+    this.#runtime = undefined;
+    this.#address = undefined;
     return Promise.resolve();
   }
 }

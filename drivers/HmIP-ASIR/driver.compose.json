@@ -4,7 +4,7 @@
     "en": "HmIP-ASIR"
   },
   "class": "siren",
-  "capabilities": [],
+  "capabilities": ["homematic_acoustic_alarm_active"],
   "images": {
     "large": "/drivers/HmIP-ASIR/assets/images/large.png",
     "small": "/drivers/HmIP-ASIR/assets/images/small.png"

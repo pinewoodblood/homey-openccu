@@ -333,6 +333,38 @@ const HMIP_RGBW_PROFILE: DeviceProfile = {
   ],
 };
 
+function powerMeterDiagnosticBindings(
+  channel: number,
+): DeviceProfile["bindings"] {
+  return [
+    {
+      capability: "measure_frequency",
+      channel,
+      parameter: "FREQUENCY",
+      readOnly: true,
+    },
+    {
+      capability: "alarm_generic.energy_counter_overflow",
+      channel,
+      parameter: "ENERGY_COUNTER_OVERFLOW",
+      readOnly: true,
+      transform: "boolean",
+    },
+    ...[
+      ["alarm_generic.current_status", "CURRENT_STATUS"],
+      ["alarm_generic.power_status", "POWER_STATUS"],
+      ["alarm_generic.voltage_status", "VOLTAGE_STATUS"],
+      ["alarm_generic.frequency_status", "FREQUENCY_STATUS"],
+    ].map(([capability, parameter]) => ({
+      capability,
+      channel,
+      parameter,
+      readOnly: true,
+      transform: "normal-status-to-alarm" as const,
+    })),
+  ];
+}
+
 const HMIP_BSM_PROFILE: DeviceProfile = {
   id: "hmip-bsm",
   driverId: "HmIP-BSM",
@@ -353,6 +385,7 @@ const HMIP_BSM_PROFILE: DeviceProfile = {
       parameter: "ENERGY_COUNTER",
       transform: "watt-hour-to-kilowatt-hour",
     },
+    ...powerMeterDiagnosticBindings(7),
   ],
   buttonChannels: [1, 2],
 };
@@ -392,6 +425,7 @@ function meteredSwitchProfile(
         parameter: "ENERGY_COUNTER",
         transform: "watt-hour-to-kilowatt-hour",
       },
+      ...powerMeterDiagnosticBindings(meterChannel),
     ],
   };
 }
@@ -432,6 +466,7 @@ export const HMIP_POWER_METER_PROFILE: DeviceProfile = {
       parameter: "ENERGY_COUNTER",
       transform: "watt-hour-to-kilowatt-hour",
     },
+    ...powerMeterDiagnosticBindings(6),
   ],
 };
 
@@ -972,6 +1007,20 @@ const HMIP_ASIR_PROFILE: DeviceProfile = {
   driverId: "HmIP-ASIR",
   deviceTypes: ["HmIP-ASIR"],
   bindings: [
+    {
+      capability: "homematic_acoustic_alarm_active",
+      channel: 3,
+      parameter: "ACOUSTIC_ALARM_ACTIVE",
+      readOnly: true,
+      transform: "boolean",
+    },
+    {
+      capability: "homematic_optical_alarm_active",
+      channel: 3,
+      parameter: "OPTICAL_ALARM_ACTIVE",
+      readOnly: true,
+      transform: "boolean",
+    },
     {
       capability: "onoff",
       channel: 3,
