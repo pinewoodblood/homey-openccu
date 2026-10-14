@@ -3821,6 +3821,294 @@
           }
         ],
         "id": "turn_garage_light_on"
+      },
+      {
+        "title": {
+          "en": "Start configurable HmIP siren alarm",
+          "de": "Konfigurierbaren HmIP-Sirenenalarm starten"
+        },
+        "titleFormatted": {
+          "en": "Start [[acoustic]] + [[optical]] for [[duration]] [[unit]]",
+          "de": "[[acoustic]] + [[optical]] für [[duration]] [[unit]] starten"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "title": {
+              "en": "Device",
+              "de": "Gerät"
+            },
+            "filter": "driver_id=HmIP-ASIR"
+          },
+          {
+            "name": "acoustic",
+            "type": "dropdown",
+            "title": {
+              "en": "Acoustic signal",
+              "de": "Akustisches Signal"
+            },
+            "values": [
+              {
+                "id": "DISABLE_ACOUSTIC_SIGNAL",
+                "label": {
+                  "en": "Off",
+                  "de": "Aus"
+                }
+              },
+              {
+                "id": "FREQUENCY_RISING",
+                "label": {
+                  "en": "Rising",
+                  "de": "Ansteigend"
+                }
+              },
+              {
+                "id": "FREQUENCY_FALLING",
+                "label": {
+                  "en": "Falling",
+                  "de": "Abfallend"
+                }
+              },
+              {
+                "id": "FREQUENCY_RISING_AND_FALLING",
+                "label": {
+                  "en": "Rising and falling",
+                  "de": "An- und absteigend"
+                }
+              },
+              {
+                "id": "FREQUENCY_ALTERNATING_LOW_HIGH",
+                "label": {
+                  "en": "Alternating low/high",
+                  "de": "Abwechselnd tief/hoch"
+                }
+              },
+              {
+                "id": "FREQUENCY_ALTERNATING_LOW_MID_HIGH",
+                "label": {
+                  "en": "Alternating low/mid/high",
+                  "de": "Abwechselnd tief/mittel/hoch"
+                }
+              },
+              {
+                "id": "FREQUENCY_HIGHON_OFF",
+                "label": {
+                  "en": "High on/off",
+                  "de": "Hoch ein/aus"
+                }
+              },
+              {
+                "id": "FREQUENCY_HIGHON_LONGOFF",
+                "label": {
+                  "en": "High on/long off",
+                  "de": "Hoch ein/lang aus"
+                }
+              },
+              {
+                "id": "FREQUENCY_LOWON_OFF_HIGHON_OFF",
+                "label": {
+                  "en": "Low/high pulse",
+                  "de": "Tief/Hoch-Puls"
+                }
+              },
+              {
+                "id": "FREQUENCY_LOWON_LONGOFF_HIGHON_LONGOFF",
+                "label": {
+                  "en": "Low/high long pulse",
+                  "de": "Tief/Hoch-Langpuls"
+                }
+              },
+              {
+                "id": "LOW_BATTERY",
+                "label": {
+                  "en": "Low battery",
+                  "de": "Batterie schwach"
+                }
+              },
+              {
+                "id": "DISARMED",
+                "label": {
+                  "en": "Disarmed",
+                  "de": "Unscharf"
+                }
+              },
+              {
+                "id": "INTERNALLY_ARMED",
+                "label": {
+                  "en": "Internally armed",
+                  "de": "Intern scharf"
+                }
+              },
+              {
+                "id": "EXTERNALLY_ARMED",
+                "label": {
+                  "en": "Externally armed",
+                  "de": "Extern scharf"
+                }
+              },
+              {
+                "id": "DELAYED_INTERNALLY_ARMED",
+                "label": {
+                  "en": "Delayed internally armed",
+                  "de": "Intern verzögert scharf"
+                }
+              },
+              {
+                "id": "DELAYED_EXTERNALLY_ARMED",
+                "label": {
+                  "en": "Delayed externally armed",
+                  "de": "Extern verzögert scharf"
+                }
+              },
+              {
+                "id": "EVENT",
+                "label": {
+                  "en": "Event",
+                  "de": "Ereignis"
+                }
+              },
+              {
+                "id": "ERROR",
+                "label": {
+                  "en": "Error",
+                  "de": "Fehler"
+                }
+              }
+            ]
+          },
+          {
+            "name": "optical",
+            "type": "dropdown",
+            "title": {
+              "en": "Optical signal",
+              "de": "Optisches Signal"
+            },
+            "values": [
+              {
+                "id": "DISABLE_OPTICAL_SIGNAL",
+                "label": {
+                  "en": "Off",
+                  "de": "Aus"
+                }
+              },
+              {
+                "id": "BLINKING_ALTERNATELY_REPEATING",
+                "label": {
+                  "en": "Alternating blinking",
+                  "de": "Abwechselnd blinken"
+                }
+              },
+              {
+                "id": "BLINKING_BOTH_REPEATING",
+                "label": {
+                  "en": "Both blinking",
+                  "de": "Beide blinken"
+                }
+              },
+              {
+                "id": "DOUBLE_FLASHING_REPEATING",
+                "label": {
+                  "en": "Double flash",
+                  "de": "Doppelblitz"
+                }
+              },
+              {
+                "id": "FLASHING_BOTH_REPEATING",
+                "label": {
+                  "en": "Both flashing",
+                  "de": "Beide blitzen"
+                }
+              },
+              {
+                "id": "CONFIRMATION_SIGNAL_0",
+                "label": {
+                  "en": "Confirmation 0",
+                  "de": "Bestätigung 0"
+                }
+              },
+              {
+                "id": "CONFIRMATION_SIGNAL_1",
+                "label": {
+                  "en": "Confirmation 1",
+                  "de": "Bestätigung 1"
+                }
+              },
+              {
+                "id": "CONFIRMATION_SIGNAL_2",
+                "label": {
+                  "en": "Confirmation 2",
+                  "de": "Bestätigung 2"
+                }
+              }
+            ]
+          },
+          {
+            "name": "duration",
+            "type": "number",
+            "title": {
+              "en": "Duration",
+              "de": "Dauer"
+            },
+            "min": 0,
+            "max": 16343,
+            "step": 1
+          },
+          {
+            "name": "unit",
+            "type": "dropdown",
+            "title": {
+              "en": "Unit",
+              "de": "Einheit"
+            },
+            "values": [
+              {
+                "id": "S",
+                "label": {
+                  "en": "Seconds",
+                  "de": "Sekunden"
+                }
+              },
+              {
+                "id": "M",
+                "label": {
+                  "en": "Minutes",
+                  "de": "Minuten"
+                }
+              },
+              {
+                "id": "H",
+                "label": {
+                  "en": "Hours",
+                  "de": "Stunden"
+                }
+              }
+            ]
+          }
+        ],
+        "id": "set_hmip_siren_alarm"
+      },
+      {
+        "title": {
+          "en": "Stop HmIP siren alarm",
+          "de": "HmIP-Sirenenalarm stoppen"
+        },
+        "titleFormatted": {
+          "en": "Stop HmIP siren alarm",
+          "de": "HmIP-Sirenenalarm stoppen"
+        },
+        "args": [
+          {
+            "name": "device",
+            "type": "device",
+            "title": {
+              "en": "Device",
+              "de": "Gerät"
+            },
+            "filter": "driver_id=HmIP-ASIR"
+          }
+        ],
+        "id": "stop_hmip_siren_alarm"
       }
     ]
   },
@@ -8336,6 +8624,64 @@
       "getable": true,
       "setable": false,
       "insights": false
+    },
+    "homematic_rssi_device": {
+      "type": "number",
+      "title": {
+        "en": "RSSI device",
+        "de": "RSSI Gerät"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "units": {
+        "en": "dBm",
+        "de": "dBm"
+      },
+      "decimals": 0,
+      "min": -127,
+      "max": -1
+    },
+    "homematic_rssi_peer": {
+      "type": "number",
+      "title": {
+        "en": "RSSI peer",
+        "de": "RSSI Peer"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true,
+      "units": {
+        "en": "dBm",
+        "de": "dBm"
+      },
+      "decimals": 0,
+      "min": -127,
+      "max": -1
+    },
+    "homematic_acoustic_alarm_active": {
+      "type": "boolean",
+      "title": {
+        "en": "Acoustic alarm active",
+        "de": "Akustischer Alarm aktiv"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true
+    },
+    "homematic_optical_alarm_active": {
+      "type": "boolean",
+      "title": {
+        "en": "Optical alarm active",
+        "de": "Optischer Alarm aktiv"
+      },
+      "getable": true,
+      "setable": false,
+      "uiComponent": "sensor",
+      "insights": true
     }
   }
 }
