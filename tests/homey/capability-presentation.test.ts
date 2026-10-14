@@ -35,7 +35,9 @@ describe("dynamic capability presentation", () => {
   });
 
   it("leaves unrelated capabilities unchanged", () => {
-    expect(capabilityPresentationOptions("alarm_generic.other")).toBeUndefined();
+    expect(
+      capabilityPresentationOptions("alarm_generic.other"),
+    ).toBeUndefined();
     expect(capabilityPresentationOptions("measure_power")).toBeUndefined();
   });
 });
