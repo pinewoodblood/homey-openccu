@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import type { OpenCcuDataPoint, OpenCcuDevice } from "../../src/domain/model";
-import { ProfileRegistry } from "../../src/profiles/registry";
+import { resolveDeviceMapping } from "../../src/mapping/device-resolver";
 import type { ParameterType } from "../../src/protocol/xmlrpc/types";
 
 function point(parameter: string, type: ParameterType): OpenCcuDataPoint {
@@ -17,7 +17,7 @@ function point(parameter: string, type: ParameterType): OpenCcuDataPoint {
 }
 
 describe("PSM energy diagnostics", () => {
-  it("exposes frequency and quality/overflow alarms when discovered", () => {
+  it("exposes frequency and named quality/overflow diagnostics", () => {
     const points = [
       point("FREQUENCY", "FLOAT"),
       point("FREQUENCY_STATUS", "ENUM"),
@@ -42,11 +42,12 @@ describe("PSM energy diagnostics", () => {
       ]),
     };
 
-    const capabilities = new ProfileRegistry()
-      .resolve(device)
-      .map(({ capability }) => capability);
+    const capabilities = resolveDeviceMapping(device).bindings.map(
+      ({ capability }) => capability,
+    );
     expect(capabilities).toContain("measure_frequency");
-    expect(capabilities).toContain("alarm_generic.frequency_status");
-    expect(capabilities).toContain("alarm_generic.energy_counter_overflow");
+    expect(capabilities).toContain("homematic_frequency_measurement_error");
+    expect(capabilities).toContain("homematic_energy_counter_overflow");
+    expect(capabilities).not.toContain("alarm_generic.frequency_status");
   });
 });

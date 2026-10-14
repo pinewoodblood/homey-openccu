@@ -1,5 +1,6 @@
 import type { OpenCcuDevice } from "../domain/model";
 import { MappingDecisionLog } from "./decision";
+import { presentDiagnosticBindings } from "./diagnostic-capabilities";
 import { mapGenericDevice } from "./generic-mapper";
 import type { ButtonEventBinding, CapabilityBinding } from "./types";
 import { ProfileRegistry } from "../profiles/registry";
@@ -67,15 +68,16 @@ export function resolveDeviceMapping(
   }
   const decisions = new MappingDecisionLog();
   const genericBindings = mapGenericDevice(device, decisions);
+  const bindings = includeMaintenance
+    ? mergeCapabilityBindings(
+        genericBindings,
+        resolveHmIpMaintenanceBindings(device),
+      )
+    : genericBindings;
   return {
     driverId: GENERIC_DRIVER_ID,
     generic: true,
-    bindings: includeMaintenance
-      ? mergeCapabilityBindings(
-          genericBindings,
-          resolveHmIpMaintenanceBindings(device),
-        )
-      : genericBindings,
+    bindings: presentDiagnosticBindings(bindings),
     buttonEvents: [],
     decisions: decisions.list(),
   };
@@ -109,7 +111,7 @@ function resolveKnownDeviceMapping(
   const decisions = new MappingDecisionLog();
   const definition = logical ?? profile;
   const profileBindings = profiles.resolve(device, decisions, logical?.id);
-  const bindings =
+  const resolvedBindings =
     includeMaintenance && logical === undefined
       ? mergeCapabilityBindings(
           profileBindings,
@@ -129,7 +131,7 @@ function resolveKnownDeviceMapping(
             : { nameChannel: logical.nameChannel }),
         }),
     generic: false,
-    bindings,
+    bindings: presentDiagnosticBindings(resolvedBindings),
     buttonEvents: resolveProfileButtonEvents(device, definition),
     decisions: decisions.list(),
   };

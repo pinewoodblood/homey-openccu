@@ -1,0 +1,18 @@
+{
+  "type": "number",
+  "title": {
+    "en": "Operating voltage",
+    "de": "Betriebsspannung"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true,
+  "units": {
+    "en": "V",
+    "de": "V"
+  },
+  "decimals": 1,
+  "min": 0,
+  "max": 25.2
+}
