@@ -8,16 +8,16 @@ describe("project tooling", () => {
       readFileSync(".homeycompose/app.json", "utf8"),
     ) as Record<string, unknown>;
 
-    expect(manifest.id).toBe("io.github.branselbytes.openccu");
+    expect(manifest.id).toBe("io.github.pinewoodblood.openccu");
     expect(manifest.name).toEqual({
-      en: "OpenCCU Local",
-      de: "OpenCCU Local",
+      en: "OpenCCU Local Enhanced",
+      de: "OpenCCU Local Enhanced",
     });
     expect(manifest.source).toBe(
-      "https://github.com/branselbytes/homey-openccu",
+      "https://github.com/pinewoodblood/homey-openccu",
     );
     expect(manifest.support).toBe(
-      "https://github.com/branselbytes/homey-openccu/issues",
+      "https://github.com/pinewoodblood/homey-openccu/issues",
     );
   });
 });

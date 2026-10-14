@@ -4,6 +4,10 @@ import { mapGenericDevice } from "./generic-mapper";
 import type { ButtonEventBinding, CapabilityBinding } from "./types";
 import { ProfileRegistry } from "../profiles/registry";
 import {
+  mergeCapabilityBindings,
+  resolveHmIpMaintenanceBindings,
+} from "../profiles/maintenance";
+import {
   resolveProfileButtonEvents,
   type DeviceProfile,
   type LogicalDeviceProfile,
@@ -52,7 +56,10 @@ export function resolveDeviceMapping(
   return {
     driverId: GENERIC_DRIVER_ID,
     generic: true,
-    bindings: mapGenericDevice(device, decisions),
+    bindings: mergeCapabilityBindings(
+      mapGenericDevice(device, decisions),
+      resolveHmIpMaintenanceBindings(device),
+    ),
     buttonEvents: [],
     decisions: decisions.list(),
   };

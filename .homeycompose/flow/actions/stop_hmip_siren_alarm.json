@@ -1,0 +1,21 @@
+{
+  "title": {
+    "en": "Stop HmIP siren alarm",
+    "de": "HmIP-Sirenenalarm stoppen"
+  },
+  "titleFormatted": {
+    "en": "Stop HmIP siren alarm",
+    "de": "HmIP-Sirenenalarm stoppen"
+  },
+  "args": [
+    {
+      "name": "device",
+      "type": "device",
+      "title": {
+        "en": "Device",
+        "de": "Gerät"
+      },
+      "filter": "driver_id=HmIP-ASIR"
+    }
+  ]
+}

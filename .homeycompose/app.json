@@ -1,21 +1,34 @@
 {
-  "id": "io.github.branselbytes.openccu",
+  "id": "io.github.pinewoodblood.openccu",
   "version": "0.1.11",
   "compatibility": ">=12.9.0",
   "sdk": 3,
   "name": {
-    "en": "OpenCCU Local",
-    "de": "OpenCCU Local"
+    "en": "OpenCCU Local Enhanced",
+    "de": "OpenCCU Local Enhanced"
   },
   "description": {
-    "en": "Connect Homematic IP devices locally through OpenCCU",
-    "de": "Homematic-IP-Geräte lokal über OpenCCU verbinden"
+    "en": "Enhanced local Homematic IP integration through CCU/OpenCCU",
+    "de": "Erweiterte lokale Homematic-IP-Integration über CCU/OpenCCU"
   },
   "tags": {
-    "en": ["OpenCCU", "Homematic IP", "HmIP", "local"],
-    "de": ["OpenCCU", "Homematic IP", "HmIP", "lokal"]
+    "en": [
+      "OpenCCU",
+      "Homematic IP",
+      "HmIP",
+      "local"
+    ],
+    "de": [
+      "OpenCCU",
+      "Homematic IP",
+      "HmIP",
+      "lokal"
+    ]
   },
-  "category": ["tools", "appliances"],
+  "category": [
+    "tools",
+    "appliances"
+  ],
   "permissions": [],
   "api": {
     "getDiscovery": {
@@ -50,14 +63,14 @@
   },
   "brandColor": "#192c6e",
   "author": {
-    "name": "branselbytes"
+    "name": "pinewoodblood (fork)"
   },
   "bugs": {
-    "url": "https://github.com/branselbytes/homey-openccu/issues"
+    "url": "https://github.com/pinewoodblood/homey-openccu/issues"
   },
-  "source": "https://github.com/branselbytes/homey-openccu",
-  "homepage": "https://github.com/branselbytes/homey-openccu",
-  "support": "https://github.com/branselbytes/homey-openccu/issues",
+  "source": "https://github.com/pinewoodblood/homey-openccu",
+  "homepage": "https://github.com/pinewoodblood/homey-openccu",
+  "support": "https://github.com/pinewoodblood/homey-openccu/issues",
   "contributors": {
     "developers": [
       {

@@ -1,22 +1,35 @@
 {
   "_comment": "This file is generated. Please edit .homeycompose/app.json instead.",
-  "id": "io.github.branselbytes.openccu",
+  "id": "io.github.pinewoodblood.openccu",
   "version": "0.1.11",
   "compatibility": ">=12.9.0",
   "sdk": 3,
   "name": {
-    "en": "OpenCCU Local",
-    "de": "OpenCCU Local"
+    "en": "OpenCCU Local Enhanced",
+    "de": "OpenCCU Local Enhanced"
   },
   "description": {
-    "en": "Connect Homematic IP devices locally through OpenCCU",
-    "de": "Homematic-IP-Geräte lokal über OpenCCU verbinden"
+    "en": "Enhanced local Homematic IP integration through CCU/OpenCCU",
+    "de": "Erweiterte lokale Homematic-IP-Integration über CCU/OpenCCU"
   },
   "tags": {
-    "en": ["OpenCCU", "Homematic IP", "HmIP", "local"],
-    "de": ["OpenCCU", "Homematic IP", "HmIP", "lokal"]
+    "en": [
+      "OpenCCU",
+      "Homematic IP",
+      "HmIP",
+      "local"
+    ],
+    "de": [
+      "OpenCCU",
+      "Homematic IP",
+      "HmIP",
+      "lokal"
+    ]
   },
-  "category": ["tools", "appliances"],
+  "category": [
+    "tools",
+    "appliances"
+  ],
   "permissions": [],
   "api": {
     "getDiscovery": {
@@ -51,14 +64,14 @@
   },
   "brandColor": "#192c6e",
   "author": {
-    "name": "branselbytes"
+    "name": "pinewoodblood (fork)"
   },
   "bugs": {
-    "url": "https://github.com/branselbytes/homey-openccu/issues"
+    "url": "https://github.com/pinewoodblood/homey-openccu/issues"
   },
-  "source": "https://github.com/branselbytes/homey-openccu",
-  "homepage": "https://github.com/branselbytes/homey-openccu",
-  "support": "https://github.com/branselbytes/homey-openccu/issues",
+  "source": "https://github.com/pinewoodblood/homey-openccu",
+  "homepage": "https://github.com/pinewoodblood/homey-openccu",
+  "support": "https://github.com/pinewoodblood/homey-openccu/issues",
   "contributors": {
     "developers": [
       {
@@ -3819,7 +3832,9 @@
         "de": "HM-PB-2-FM"
       },
       "class": "button",
-      "capabilities": ["alarm_battery"],
+      "capabilities": [
+        "alarm_battery"
+      ],
       "images": {
         "large": "/drivers/HM-PB-2-FM/assets/images/large.png",
         "small": "/drivers/HM-PB-2-FM/assets/images/small.png"
@@ -3838,7 +3853,10 @@
         }
       ],
       "energy": {
-        "batteries": ["AAA", "AAA"]
+        "batteries": [
+          "AAA",
+          "AAA"
+        ]
       }
     },
     {
@@ -3872,7 +3890,9 @@
         }
       ],
       "energy": {
-        "batteries": ["CR2032"]
+        "batteries": [
+          "CR2032"
+        ]
       },
       "capabilitiesOptions": {
         "alarm_contact": {
@@ -3928,7 +3948,10 @@
         }
       ],
       "energy": {
-        "batteries": ["C", "C"]
+        "batteries": [
+          "C",
+          "C"
+        ]
       },
       "capabilitiesOptions": {
         "onoff": {
@@ -3984,7 +4007,9 @@
         "de": "HmIP Schalt- und Messsteckdosen"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HMIP-PSM/assets/images/large.png",
         "small": "/drivers/HMIP-PSM/assets/images/small.png"
@@ -4010,7 +4035,9 @@
         "de": "HmIP-SWDO Fenster-/Türkontakte"
       },
       "class": "sensor",
-      "capabilities": ["alarm_contact"],
+      "capabilities": [
+        "alarm_contact"
+      ],
       "images": {
         "large": "/drivers/HMIP-SWDO/assets/images/large.png",
         "small": "/drivers/HMIP-SWDO/assets/images/small.png"
@@ -4182,7 +4209,10 @@
         "en": "HmIP-BDT"
       },
       "class": "light",
-      "capabilities": ["onoff", "dim"],
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
       "images": {
         "large": "/drivers/HmIP-BDT/assets/images/large.png",
         "small": "/drivers/HmIP-BDT/assets/images/small.png"
@@ -4258,7 +4288,10 @@
         "de": "HmIP-BROLL / BROLL-2"
       },
       "class": "blinds",
-      "capabilities": ["windowcoverings_set", "windowcoverings_state"],
+      "capabilities": [
+        "windowcoverings_set",
+        "windowcoverings_state"
+      ],
       "images": {
         "large": "/drivers/HmIP-BROLL/assets/images/large.png",
         "small": "/drivers/HmIP-BROLL/assets/images/small.png"
@@ -4283,7 +4316,9 @@
         "en": "HmIP-BS2"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-BS2/assets/images/large.png",
         "small": "/drivers/HmIP-BS2/assets/images/small.png"
@@ -4309,7 +4344,9 @@
         "de": "HmIP-BSL"
       },
       "class": "light",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "small": "/drivers/HmIP-BSL/assets/images/small.png",
         "large": "/drivers/HmIP-BSL/assets/images/large.png"
@@ -4428,7 +4465,9 @@
         "en": "HmIP-DLD"
       },
       "class": "lock",
-      "capabilities": ["locked"],
+      "capabilities": [
+        "locked"
+      ],
       "images": {
         "large": "/drivers/HmIP-DLD/assets/images/large.png",
         "small": "/drivers/HmIP-DLD/assets/images/small.png"
@@ -4454,7 +4493,9 @@
         "de": "HmIP-DLP"
       },
       "class": "lock",
-      "capabilities": ["alarm_contact"],
+      "capabilities": [
+        "alarm_contact"
+      ],
       "images": {
         "small": "/drivers/HmIP-DLP/assets/images/small.png",
         "large": "/drivers/HmIP-DLP/assets/images/large.png"
@@ -4480,7 +4521,9 @@
         "de": "HmIP-DLS"
       },
       "class": "sensor",
-      "capabilities": ["homematic_lock_state"],
+      "capabilities": [
+        "homematic_lock_state"
+      ],
       "images": {
         "small": "/drivers/HmIP-DLS/assets/images/small.png",
         "large": "/drivers/HmIP-DLS/assets/images/large.png"
@@ -4531,7 +4574,10 @@
         "en": "HmIP-DRDI3"
       },
       "class": "light",
-      "capabilities": ["onoff", "dim"],
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
       "images": {
         "large": "/drivers/HmIP-DRDI3/assets/images/large.png",
         "small": "/drivers/HmIP-DRDI3/assets/images/small.png"
@@ -4556,7 +4602,12 @@
         "en": "HmIP-DRG-DALI"
       },
       "class": "light",
-      "capabilities": ["onoff", "dim", "light_hue", "light_saturation"],
+      "capabilities": [
+        "onoff",
+        "dim",
+        "light_hue",
+        "light_saturation"
+      ],
       "images": {
         "large": "/drivers/HmIP-DRG-DALI/assets/images/large.png",
         "small": "/drivers/HmIP-DRG-DALI/assets/images/small.png"
@@ -4581,7 +4632,9 @@
         "en": "HmIP-DRSI1"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-DRSI1/assets/images/large.png",
         "small": "/drivers/HmIP-DRSI1/assets/images/small.png"
@@ -4606,7 +4659,9 @@
         "en": "HmIP-DRSI4"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-DRSI4/assets/images/large.png",
         "small": "/drivers/HmIP-DRSI4/assets/images/small.png"
@@ -4741,7 +4796,9 @@
         "de": "HmIP-FALMOT-C12"
       },
       "class": "sensor",
-      "capabilities": ["homematic_measure_valve"],
+      "capabilities": [
+        "homematic_measure_valve"
+      ],
       "images": {
         "large": "/drivers/HmIP-FALMOT-C12/assets/images/large.png",
         "small": "/drivers/HmIP-FALMOT-C12/assets/images/small.png"
@@ -4809,7 +4866,9 @@
         "en": "HmIP-FCI1"
       },
       "class": "sensor",
-      "capabilities": ["alarm_contact"],
+      "capabilities": [
+        "alarm_contact"
+      ],
       "images": {
         "large": "/drivers/HmIP-FCI1/assets/images/large.png",
         "small": "/drivers/HmIP-FCI1/assets/images/small.png"
@@ -4860,7 +4919,10 @@
         "en": "HmIP-FDT"
       },
       "class": "light",
-      "capabilities": ["onoff", "dim"],
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
       "images": {
         "large": "/drivers/HmIP-FDT/assets/images/large.png",
         "small": "/drivers/HmIP-FDT/assets/images/small.png"
@@ -4885,7 +4947,10 @@
         "en": "HmIP-FROLL"
       },
       "class": "blinds",
-      "capabilities": ["windowcoverings_set", "windowcoverings_state"],
+      "capabilities": [
+        "windowcoverings_set",
+        "windowcoverings_state"
+      ],
       "images": {
         "large": "/drivers/HmIP-FROLL/assets/images/large.png",
         "small": "/drivers/HmIP-FROLL/assets/images/small.png"
@@ -4910,7 +4975,9 @@
         "en": "HmIP-FS6"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-FS6/assets/images/large.png",
         "small": "/drivers/HmIP-FS6/assets/images/small.png"
@@ -4935,7 +5002,9 @@
         "en": "HmIP-FSI"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-FSI/assets/images/large.png",
         "small": "/drivers/HmIP-FSI/assets/images/small.png"
@@ -4960,7 +5029,9 @@
         "en": "HmIP-FSI16"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-FSI16/assets/images/large.png",
         "small": "/drivers/HmIP-FSI16/assets/images/small.png"
@@ -4985,7 +5056,9 @@
         "en": "HmIP-FSI6"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-FSI6/assets/images/large.png",
         "small": "/drivers/HmIP-FSI6/assets/images/small.png"
@@ -5203,7 +5276,9 @@
         "de": "HmIP-LSC"
       },
       "class": "light",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "small": "/drivers/HmIP-LSC/assets/images/small.png",
         "large": "/drivers/HmIP-LSC/assets/images/large.png"
@@ -5341,7 +5416,9 @@
         "en": "HmIP-MOD-OC8"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-MOD-OC8/assets/images/large.png",
         "small": "/drivers/HmIP-MOD-OC8/assets/images/small.png"
@@ -5392,7 +5469,9 @@
         "en": "HmIP-MOD-TM"
       },
       "class": "garagedoor",
-      "capabilities": ["garagedoor_closed"],
+      "capabilities": [
+        "garagedoor_closed"
+      ],
       "images": {
         "large": "/drivers/HmIP-MOD-TM/assets/images/large.png",
         "small": "/drivers/HmIP-MOD-TM/assets/images/small.png"
@@ -5443,7 +5522,9 @@
         "en": "HmIP-PCBS"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-PCBS/assets/images/large.png",
         "small": "/drivers/HmIP-PCBS/assets/images/small.png"
@@ -5468,7 +5549,9 @@
         "en": "HmIP-PCBS-BAT"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-PCBS-BAT/assets/images/large.png",
         "small": "/drivers/HmIP-PCBS-BAT/assets/images/small.png"
@@ -5493,7 +5576,9 @@
         "en": "HmIP-PCBS2"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-PCBS2/assets/images/large.png",
         "small": "/drivers/HmIP-PCBS2/assets/images/small.png"
@@ -5518,7 +5603,10 @@
         "en": "HmIP-PDT"
       },
       "class": "light",
-      "capabilities": ["onoff", "dim"],
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
       "images": {
         "large": "/drivers/HmIP-PDT/assets/images/large.png",
         "small": "/drivers/HmIP-PDT/assets/images/small.png"
@@ -5544,7 +5632,9 @@
         "de": "HmIP-PMFS"
       },
       "class": "sensor",
-      "capabilities": ["alarm_generic.power_failure"],
+      "capabilities": [
+        "alarm_generic.power_failure"
+      ],
       "images": {
         "small": "/drivers/HmIP-PMFS/assets/images/small.png",
         "large": "/drivers/HmIP-PMFS/assets/images/large.png"
@@ -5654,7 +5744,10 @@
         "en": "HmIP-RGBW"
       },
       "class": "light",
-      "capabilities": ["onoff", "dim"],
+      "capabilities": [
+        "onoff",
+        "dim"
+      ],
       "images": {
         "large": "/drivers/HmIP-RGBW/assets/images/large.png",
         "small": "/drivers/HmIP-RGBW/assets/images/small.png"
@@ -5679,7 +5772,9 @@
         "en": "HmIP-SAM"
       },
       "class": "sensor",
-      "capabilities": ["alarm_motion"],
+      "capabilities": [
+        "alarm_motion"
+      ],
       "images": {
         "large": "/drivers/HmIP-SAM/assets/images/large.png",
         "small": "/drivers/HmIP-SAM/assets/images/small.png"
@@ -5704,7 +5799,9 @@
         "en": "HmIP-SCI"
       },
       "class": "sensor",
-      "capabilities": ["alarm_contact"],
+      "capabilities": [
+        "alarm_contact"
+      ],
       "images": {
         "large": "/drivers/HmIP-SCI/assets/images/large.png",
         "small": "/drivers/HmIP-SCI/assets/images/small.png"
@@ -5811,7 +5908,9 @@
         "en": "HmIP-SLO"
       },
       "class": "sensor",
-      "capabilities": ["measure_luminance"],
+      "capabilities": [
+        "measure_luminance"
+      ],
       "images": {
         "large": "/drivers/HmIP-SLO/assets/images/large.png",
         "small": "/drivers/HmIP-SLO/assets/images/small.png"
@@ -5836,7 +5935,10 @@
         "en": "HmIP-SMI"
       },
       "class": "sensor",
-      "capabilities": ["alarm_motion", "measure_luminance"],
+      "capabilities": [
+        "alarm_motion",
+        "measure_luminance"
+      ],
       "images": {
         "large": "/drivers/HmIP-SMI/assets/images/large.png",
         "small": "/drivers/HmIP-SMI/assets/images/small.png"
@@ -5861,7 +5963,10 @@
         "en": "HmIP-SMI55"
       },
       "class": "sensor",
-      "capabilities": ["alarm_motion", "measure_luminance"],
+      "capabilities": [
+        "alarm_motion",
+        "measure_luminance"
+      ],
       "images": {
         "large": "/drivers/HmIP-SMI55/assets/images/large.png",
         "small": "/drivers/HmIP-SMI55/assets/images/small.png"
@@ -5886,7 +5991,10 @@
         "en": "HmIP-SMO-A"
       },
       "class": "sensor",
-      "capabilities": ["alarm_motion", "measure_luminance"],
+      "capabilities": [
+        "alarm_motion",
+        "measure_luminance"
+      ],
       "images": {
         "large": "/drivers/HmIP-SMO-A/assets/images/large.png",
         "small": "/drivers/HmIP-SMO-A/assets/images/small.png"
@@ -5967,7 +6075,10 @@
         "en": "HmIP-SPI"
       },
       "class": "sensor",
-      "capabilities": ["alarm_motion", "measure_luminance"],
+      "capabilities": [
+        "alarm_motion",
+        "measure_luminance"
+      ],
       "images": {
         "large": "/drivers/HmIP-SPI/assets/images/large.png",
         "small": "/drivers/HmIP-SPI/assets/images/small.png"
@@ -6030,7 +6141,9 @@
         "en": "HmIP-SRH"
       },
       "class": "sensor",
-      "capabilities": ["homematic_rhs_state"],
+      "capabilities": [
+        "homematic_rhs_state"
+      ],
       "images": {
         "large": "/drivers/HmIP-SRH/assets/images/large.png",
         "small": "/drivers/HmIP-SRH/assets/images/small.png"
@@ -6104,7 +6217,10 @@
         "en": "HmIP-STH"
       },
       "class": "thermostat",
-      "capabilities": ["measure_temperature", "measure_humidity"],
+      "capabilities": [
+        "measure_temperature",
+        "measure_humidity"
+      ],
       "images": {
         "large": "/drivers/HmIP-STH/assets/images/large.png",
         "small": "/drivers/HmIP-STH/assets/images/small.png"
@@ -6134,7 +6250,10 @@
         "en": "HmIP-STHD"
       },
       "class": "thermostat",
-      "capabilities": ["measure_temperature", "measure_humidity"],
+      "capabilities": [
+        "measure_temperature",
+        "measure_humidity"
+      ],
       "images": {
         "large": "/drivers/HmIP-STHD/assets/images/large.png",
         "small": "/drivers/HmIP-STHD/assets/images/small.png"
@@ -6164,7 +6283,10 @@
         "en": "HmIP-STHO"
       },
       "class": "sensor",
-      "capabilities": ["measure_temperature", "measure_humidity"],
+      "capabilities": [
+        "measure_temperature",
+        "measure_humidity"
+      ],
       "images": {
         "large": "/drivers/HmIP-STHO/assets/images/large.png",
         "small": "/drivers/HmIP-STHO/assets/images/small.png"
@@ -6189,7 +6311,9 @@
         "en": "HmIP-SWD"
       },
       "class": "sensor",
-      "capabilities": ["alarm_water"],
+      "capabilities": [
+        "alarm_water"
+      ],
       "images": {
         "large": "/drivers/HmIP-SWD/assets/images/large.png",
         "small": "/drivers/HmIP-SWD/assets/images/small.png"
@@ -6214,7 +6338,9 @@
         "en": "HmIP-SWDM"
       },
       "class": "sensor",
-      "capabilities": ["alarm_contact"],
+      "capabilities": [
+        "alarm_contact"
+      ],
       "images": {
         "large": "/drivers/HmIP-SWDM/assets/images/large.png",
         "small": "/drivers/HmIP-SWDM/assets/images/small.png"
@@ -6385,7 +6511,9 @@
         "en": "HmIP-SWSD"
       },
       "class": "smokealarm",
-      "capabilities": ["alarm_smoke"],
+      "capabilities": [
+        "alarm_smoke"
+      ],
       "images": {
         "large": "/drivers/HmIP-SWSD/assets/images/large.png",
         "small": "/drivers/HmIP-SWSD/assets/images/small.png"
@@ -6436,7 +6564,9 @@
         "en": "HmIP-USBSM"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-USBSM/assets/images/large.png",
         "small": "/drivers/HmIP-USBSM/assets/images/small.png"
@@ -6461,7 +6591,9 @@
         "en": "HmIP-WGC"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-WGC/assets/images/large.png",
         "small": "/drivers/HmIP-WGC/assets/images/small.png"
@@ -6538,7 +6670,9 @@
         "en": "HmIP-WHS2"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIP-WHS2/assets/images/large.png",
         "small": "/drivers/HmIP-WHS2/assets/images/small.png"
@@ -6564,7 +6698,9 @@
         "de": "HmIP-WKP"
       },
       "class": "sensor",
-      "capabilities": ["alarm_tamper"],
+      "capabilities": [
+        "alarm_tamper"
+      ],
       "images": {
         "small": "/drivers/HmIP-WKP/assets/images/small.png",
         "large": "/drivers/HmIP-WKP/assets/images/large.png"
@@ -6692,7 +6828,11 @@
         "en": "HmIP-WSM"
       },
       "class": "other",
-      "capabilities": ["onoff", "measure_water", "meter_water"],
+      "capabilities": [
+        "onoff",
+        "measure_water",
+        "meter_water"
+      ],
       "images": {
         "large": "/drivers/HmIP-WSM/assets/images/large.png",
         "small": "/drivers/HmIP-WSM/assets/images/small.png"
@@ -7020,7 +7160,9 @@
         "de": "HmIPW-DRD3"
       },
       "class": "light",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "small": "/drivers/HmIPW-DRD3/assets/images/small.png",
         "large": "/drivers/HmIPW-DRD3/assets/images/large.png"
@@ -7096,7 +7238,9 @@
         "en": "HmIPW-DRS8"
       },
       "class": "socket",
-      "capabilities": ["onoff"],
+      "capabilities": [
+        "onoff"
+      ],
       "images": {
         "large": "/drivers/HmIPW-DRS8/assets/images/large.png",
         "small": "/drivers/HmIPW-DRS8/assets/images/small.png"
@@ -7209,7 +7353,10 @@
         "en": "HmIPW-SPI"
       },
       "class": "sensor",
-      "capabilities": ["alarm_motion", "measure_luminance"],
+      "capabilities": [
+        "alarm_motion",
+        "measure_luminance"
+      ],
       "images": {
         "large": "/drivers/HmIPW-SPI/assets/images/large.png",
         "small": "/drivers/HmIPW-SPI/assets/images/small.png"

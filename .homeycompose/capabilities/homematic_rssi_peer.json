@@ -1,0 +1,18 @@
+{
+  "type": "number",
+  "title": {
+    "en": "RSSI peer",
+    "de": "RSSI Peer"
+  },
+  "getable": true,
+  "setable": false,
+  "uiComponent": "sensor",
+  "insights": true,
+  "units": {
+    "en": "dBm",
+    "de": "dBm"
+  },
+  "decimals": 0,
+  "min": -127,
+  "max": -1
+}

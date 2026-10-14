@@ -24,6 +24,8 @@ export const VALUE_TRANSFORMS = [
   "milliamp-to-amp",
   "positive-number-to-boolean",
   "ratio-to-percent",
+  "rssi-dbm",
+  "normal-status-to-alarm",
   "smoke-status-to-boolean",
   "watt-hour-to-kilowatt-hour",
 ] as const;

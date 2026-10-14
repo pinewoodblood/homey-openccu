@@ -37,6 +37,7 @@ import {
 import type { CapabilityBinding } from "../mapping/types";
 import { HeatingScheduleService } from "../heating/service";
 import { findHeatingChannel } from "../heating/discovery";
+import type { HmIpSirenAlarmCommand } from "./hmip-siren";
 import {
   HeatingError,
   type HeatingSchedule,
@@ -452,6 +453,66 @@ export class OpenCcuRuntime {
       binding.writeChannelAddress,
       operation.parameter,
       operation.value,
+      signal,
+    );
+  }
+
+  async setHmIpSirenAlarm(
+    address: string,
+    command: HmIpSirenAlarmCommand,
+    signal?: AbortSignal,
+  ): Promise<void> {
+    const device = this.devices.get(address);
+    if (device === undefined) throw new Error("Unknown OpenCCU siren device");
+    const channel = [...device.channels.values()].find(
+      (candidate) =>
+        candidate.index === 3 &&
+        candidate.type === "ALARM_SWITCH_VIRTUAL_RECEIVER",
+    );
+    if (channel === undefined)
+      throw new Error("Selected device has no supported HmIP siren channel");
+
+    const enumWritable = (parameter: string, value: string): void => {
+      const point = channel.dataPoints.get(parameter);
+      if (
+        point === undefined ||
+        !point.writable ||
+        point.metadata.TYPE !== "ENUM"
+      )
+        throw new Error(`Siren parameter ${parameter} is not writable`);
+      const allowed = point.metadata.VALUE_LIST;
+      if (allowed !== undefined && !allowed.includes(value))
+        throw new Error(`Siren does not support ${parameter}=${value}`);
+    };
+    enumWritable("ACOUSTIC_ALARM_SELECTION", command.acoustic);
+    enumWritable("OPTICAL_ALARM_SELECTION", command.optical);
+    enumWritable("DURATION_UNIT", command.durationUnit);
+
+    const duration = channel.dataPoints.get("DURATION_VALUE");
+    if (duration === undefined || !duration.writable)
+      throw new Error("Siren duration is not writable");
+    const min =
+      typeof duration.metadata.MIN === "number" ? duration.metadata.MIN : 0;
+    const max =
+      typeof duration.metadata.MAX === "number"
+        ? duration.metadata.MAX
+        : Number.MAX_SAFE_INTEGER;
+    if (
+      !Number.isInteger(command.durationValue) ||
+      command.durationValue < min ||
+      command.durationValue > max
+    )
+      throw new RangeError("Siren duration is outside the device limits");
+
+    await this.#client.putParamset(
+      channel.address,
+      "VALUES",
+      {
+        ACOUSTIC_ALARM_SELECTION: command.acoustic,
+        OPTICAL_ALARM_SELECTION: command.optical,
+        DURATION_UNIT: command.durationUnit,
+        DURATION_VALUE: command.durationValue,
+      },
       signal,
     );
   }
