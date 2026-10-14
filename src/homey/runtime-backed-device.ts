@@ -73,6 +73,7 @@ export abstract class RuntimeBackedDevice extends Homey.Device {
                   undefined,
                   logicalId,
                   preserveLegacyGeneric,
+                  true,
                 ).bindings;
           },
           resolveButtonEvents: () => {
