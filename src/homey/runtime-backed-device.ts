@@ -6,6 +6,7 @@ import {
   DeviceBindingController,
   type HomeyDevicePort,
 } from "./device-binding-controller";
+import { capabilityPresentationOptions } from "./capability-presentation";
 import { isRuntimeProvidingApp } from "./runtime-providing-app";
 import { parseStoredBindings } from "./stored-bindings";
 import type { RpcValue } from "../protocol/xmlrpc/types";
@@ -108,11 +109,31 @@ export abstract class RuntimeBackedDevice extends Homey.Device {
         },
       );
       await this.#controller.start();
+      await this.#applyCapabilityPresentation();
     } catch (error) {
       this.error("Failed to initialize OpenCCU device", safeErrorKind(error));
       await this.setUnavailable(
         "Invalid or unsupported OpenCCU device mapping",
       );
+    }
+  }
+
+  async #applyCapabilityPresentation(): Promise<void> {
+    for (const capability of this.getCapabilities()) {
+      const options = capabilityPresentationOptions(capability);
+      if (options === undefined) continue;
+      try {
+        const currentOptions = this.getCapabilityOptions(capability) as unknown;
+        await this.setCapabilityOptions(capability, {
+          ...(isRecord(currentOptions) ? currentOptions : {}),
+          ...options,
+        });
+      } catch (error) {
+        this.error(
+          `Failed to update capability title for ${capability}`,
+          safeErrorKind(error),
+        );
+      }
     }
   }
 
