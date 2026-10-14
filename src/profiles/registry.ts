@@ -4,10 +4,6 @@ import { HMIP_PROFILES } from "./hmip";
 import { catalogAliases } from "./catalog-aliases";
 import { CATALOG_PROFILES } from "./catalog-expansion";
 import { ADDITIONAL_PROFILES } from "./additional-devices";
-import {
-  mergeCapabilityBindings,
-  resolveHmIpMaintenanceBindings,
-} from "./maintenance";
 
 import {
   resolveProfileBindings,
@@ -69,8 +65,8 @@ export class ProfileRegistry {
     const profile = this.find(device.type);
     if (!profile) return [];
     const definition = selectMappingDefinition(profile, logicalId);
-    const profileBindings = resolveProfileBindings(device, definition);
-    for (const binding of profileBindings) {
+    const bindings = resolveProfileBindings(device, definition);
+    for (const binding of bindings) {
       decisions?.add({
         channelAddress: binding.channelAddress,
         parameter: binding.parameter,
@@ -80,14 +76,7 @@ export class ProfileRegistry {
         reason: `Matched dedicated profile for ${device.type}`,
       });
     }
-    // Maintenance belongs to the physical product, not to every logical
-    // subdevice of multi-channel actuators.
-    return profile.logicalDevices === undefined
-      ? mergeCapabilityBindings(
-          profileBindings,
-          resolveHmIpMaintenanceBindings(device),
-        )
-      : profileBindings;
+    return bindings;
   }
 }
 
