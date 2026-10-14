@@ -4,7 +4,7 @@
     "en": "HmIP-ASIR"
   },
   "class": "siren",
-  "capabilities": [],
+  "capabilities": ["alarm_battery"],
   "images": {
     "large": "/drivers/HmIP-ASIR/assets/images/large.png",
     "small": "/drivers/HmIP-ASIR/assets/images/small.png"
