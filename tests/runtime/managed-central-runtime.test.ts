@@ -88,13 +88,13 @@ describe("ManagedCentralRuntimeFactory", () => {
     await new Promise((resolve) => setImmediate(resolve));
     expect(init).toHaveBeenCalledWith(
       "http://192.0.2.20:12110",
-      "io.github.pinewoodblood.openccu:HmIP-RF",
+      "io.github.pinewoodblood.openccu-HmIP-RF",
       expect.any(AbortSignal),
     );
     await runtime.stop();
     expect(init).toHaveBeenLastCalledWith(
       "",
-      "io.github.pinewoodblood.openccu:HmIP-RF",
+      "io.github.pinewoodblood.openccu-HmIP-RF",
       expect.any(AbortSignal),
     );
   });
