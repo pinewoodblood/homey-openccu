@@ -18,8 +18,14 @@ describe("Homematic RSSI normalization", () => {
 
 describe("status alarms", () => {
   it("treats NORMAL as healthy and other enum states as alarms", () => {
-    expect(transformFromOpenCcu("normal-status-to-alarm", "NORMAL")).toBe(false);
-    expect(transformFromOpenCcu("normal-status-to-alarm", "UNKNOWN")).toBe(true);
-    expect(transformFromOpenCcu("normal-status-to-alarm", "OVERFLOW")).toBe(true);
+    expect(
+      transformFromOpenCcu("normal-status-to-alarm", "NORMAL"),
+    ).toBe(false);
+    expect(
+      transformFromOpenCcu("normal-status-to-alarm", "UNKNOWN"),
+    ).toBe(true);
+    expect(
+      transformFromOpenCcu("normal-status-to-alarm", "OVERFLOW"),
+    ).toBe(true);
   });
 });
