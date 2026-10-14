@@ -9,6 +9,28 @@ interface MaintenanceDefinition {
   readonly transform?: ValueTransform;
 }
 
+// Roll out the generic maintenance layer only for device families whose real
+// CCU schemas were reviewed for this fork. Further families can be added after
+// a diagnostic report and regression fixture have been checked.
+const VERIFIED_MAINTENANCE_DEVICE_TYPES = new Set([
+  "HMIP-SWDO",
+  "HmIP-SWDO",
+  "HmIP-SWDO-2",
+  "HmIP-SWDO-I",
+  "HmIP-SWDO-A",
+  "HMIP-SWDO-A",
+  "HmIP-SWDO-PL",
+  "HmIP-SWDO-PL-2",
+  "HmIP-ASIR",
+  "HmIP-ASIR-2",
+  "HmIP-ASIR-O",
+  "HMIP-PSM",
+  "HmIP-PSM",
+  "HmIP-PSM-2",
+  "HmIP-PSM-2-A",
+  "HmIP-PSMCO",
+]);
+
 const MAINTENANCE: readonly MaintenanceDefinition[] = [
   {
     capability: "alarm_battery",
@@ -98,6 +120,8 @@ const MAINTENANCE: readonly MaintenanceDefinition[] = [
 export function resolveHmIpMaintenanceBindings(
   device: OpenCcuDevice,
 ): readonly CapabilityBinding[] {
+  if (!VERIFIED_MAINTENANCE_DEVICE_TYPES.has(normalizeDeviceType(device.type)))
+    return [];
   const channel = [...device.channels.values()].find(
     (candidate) => candidate.index === 0 && candidate.type === "MAINTENANCE",
   );
@@ -137,4 +161,8 @@ export function mergeCapabilityBindings(
     ...primary,
     ...secondary.filter(({ capability }) => !claimed.has(capability)),
   ];
+}
+
+function normalizeDeviceType(deviceType: string): string {
+  return deviceType.trim().split(/\s+/, 1)[0] ?? deviceType;
 }
